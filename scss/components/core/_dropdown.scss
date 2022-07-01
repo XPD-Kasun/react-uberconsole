@@ -1,0 +1,14 @@
+.dropdown {
+       .dropdown-container {}
+
+       .dropdown-display-label {
+              padding: 7px 12px;
+              border: 1px solid #aab7b8;
+              box-sizing: border-box;
+              background: #ffffff;
+       }
+}
+
+.dropdown-hidden-select {
+       display: none;
+}

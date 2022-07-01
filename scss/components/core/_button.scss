@@ -1,0 +1,27 @@
+$btnFontSize:14px;
+
+.btn {
+       padding: 7px 20px;
+       font-size: $btnFontSize;
+       font-weight: bold;
+       border: 1px solid #3a4b66;
+       border-radius: 3px;
+       cursor: pointer;
+       box-sizing: border-box;
+       transition: background 0.1s ease-in;
+
+       &.btn-default {
+              background-color: #fbfbfb;              
+              box-shadow: 0 0 3px 1px #f0dcf0 inset;
+              color: #32393c;
+
+              &:active {
+                     background-color: #e3e3e3;
+                     color: black;
+              }
+       }
+
+       &.btn-primary {
+              background-color: $primary-color;
+       }
+}

@@ -1,19 +1,24 @@
 {
-  "name": "backport",
+  "name": "react-console",
   "version": "1.0.0",
-  "description": "A modular light weight backend portal framework for react.",
-  "main": "index.js",
+  "description": "A modular light weight backend console framework for react.",
+  "main": "dist/index.js",
   "repository": "https://github.com/XPD-Kasun/BackPort.git",
   "author": "XPDKasun <kasunx.kelaniya@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "rollup --config rollup-config.prod.js",
     "build-dev": "rollup --config rollup-config.dev.js",
+    "watch-css": "node-sass --watch scss/index.scss dist/styles.css",
     "test": ""
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.3",
+    "@types/react": "^18.0.14",
+    "node-sass": "^7.0.1",
     "rollup": "^2.75.7",
+    "rollup-plugin-delete": "^2.0.0",
+    "rollup-plugin-scss": "^3.0.0",
     "rollup-plugin-terser": "^7.0.2",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
