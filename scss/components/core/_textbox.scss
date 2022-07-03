@@ -1,0 +1,17 @@
+.textbox {
+
+       padding: 7px 10px;
+       border: 1px solid gainsboro;
+       background: white;
+
+       &.no-border{
+              border: none;              
+       }
+
+       input.text {
+              width: 100%;
+              border: none;
+              font-size: 16px;
+              outline: none;
+       }
+}

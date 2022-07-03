@@ -7,6 +7,7 @@ export interface DropdownProps {
        className: string,
        dataSource: ControlDataSource,
        selectedId: string,
+       onSearchChange?: (text: string) => void,
        labelComponent: React.FC<{ item: object }>,
        listItemComponent: React.FC<{ item: object, onSelect: (evt: MouseEvent, item: object) => void }>
 }

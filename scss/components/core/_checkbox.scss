@@ -1,0 +1,53 @@
+.checkbox {
+
+       .checkbox-container {
+              padding: 5px;
+              display: flex;
+              align-items: center;
+
+              &>div {
+                     display: flex;
+                     align-items: center;
+              }
+       }
+
+       .toggle {
+              height: 21px;
+              background: #36463c;
+              width: 30px;
+              border-radius: 12px;
+              position: relative;
+              flex-shrink: 0;
+       }
+
+       .knob {
+              height: 15px;
+              width: 15px;
+              background: white;
+              border-radius: 7px;
+              position: absolute;
+              top: 3px;
+              left: 3px;
+              box-shadow: 0 0 3px 1px #599cab9c;
+              transition: left 0.1s ease-in;
+       }
+
+       .label {
+              padding-left: 12px;
+       }
+
+       &.checked {
+
+              .toggle {
+                     background: #168cea;
+              }
+
+              .knob {
+                     left: 12px;
+              }
+       }
+
+
+
+
+}

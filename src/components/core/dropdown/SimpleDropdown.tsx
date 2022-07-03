@@ -3,7 +3,7 @@ import { ControlDataSource } from '../../../types';
 import FrameworkDropdown from './FrameworkDropdown';
 import { SimpleDropdownProps } from './types';
 
-function DefaultLabal({item}) {
+function DefaultLabal({ item }) {
        return (
               <div className="labal-content">
                      {item.text}
@@ -11,7 +11,7 @@ function DefaultLabal({item}) {
        )
 }
 
-function ListItem({item, onSelect}) {
+function ListItem({ item, onSelect }) {
 
        return (
               <div className="dropdown-item-content" onClick={evt => onSelect(evt, item)}>
@@ -22,24 +22,50 @@ function ListItem({item, onSelect}) {
 
 function SimpleDropdown({ className = "dropdown", dataSource, selectedId, textSelector }: SimpleDropdownProps) {
 
+       let [searchTerm, setSearchTerm] = useState('');
+
        let memoizedDataSource = useMemo<ControlDataSource>(() => {
 
-              dataSource.data = dataSource.data.map(x => ({
-                     value: dataSource.idSelector(x),
-                     text: textSelector(x)
-              }));
+              let dataSourceCopy: ControlDataSource = {
+                     idSelector: dataSource.idSelector,
+                     data: null
+              };
 
-              return dataSource;
+              dataSourceCopy.data = dataSource.data.filter(x => {
+                     if (searchTerm) {
+                     
+                            if (textSelector(x).indexOf(searchTerm) > -1) {
+                                   return true;
+                            }
+                            return false;
+                     }
+                     return true;
 
-       }, [dataSource]);
+              }).map(x => {
+
+                     x['text'] = textSelector(x);
+                     return x;
+               
+              });
+
+              return dataSourceCopy;
+
+       }, [dataSource, searchTerm]);
+
+       const onSearchChange = (text: string) => {
+
+              setSearchTerm(text);
+
+       };
 
        return (
-              <FrameworkDropdown              
+              <FrameworkDropdown
                      className={className}
                      dataSource={memoizedDataSource}
                      selectedId={selectedId}
                      labelComponent={DefaultLabal}
-                     listItemComponent={ListItem}>
+                     listItemComponent={ListItem}
+                     onSearchChange={onSearchChange}>
               </FrameworkDropdown>
        )
 

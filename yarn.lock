@@ -440,25 +440,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"backport@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "backport@workspace:."
-  dependencies:
-    "@rollup/plugin-typescript": ^8.3.3
-    "@types/react": ^18.0.14
-    node-sass: ^7.0.1
-    rollup: ^2.75.7
-    rollup-plugin-delete: ^2.0.0
-    rollup-plugin-scss: ^3.0.0
-    rollup-plugin-terser: ^7.0.2
-    tslib: ^2.4.0
-    typescript: ^4.7.4
-  peerDependencies:
-    react: ^17
-    react-dom: ^17
-  languageName: unknown
-  linkType: soft
-
 "balanced-match@npm:^1.0.0":
   version: 1.0.2
   resolution: "balanced-match@npm:1.0.2"
@@ -612,6 +593,13 @@ __metadata:
   version: 2.0.0
   resolution: "chownr@npm:2.0.0"
   checksum: c57cf9dd0791e2f18a5ee9c1a299ae6e801ff58fee96dc8bfd0dcb4738a6ce58dd252a3605b1c93c6418fe4f9d5093b28ffbf4d66648cb2a9c67eaef9679be2f
+  languageName: node
+  linkType: hard
+
+"classnames@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "classnames@npm:2.3.1"
+  checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
   languageName: node
   linkType: hard
 
@@ -2199,6 +2187,38 @@ __metadata:
   dependencies:
     safe-buffer: ^5.1.0
   checksum: d779499376bd4cbb435ef3ab9a957006c8682f343f14089ed5f27764e4645114196e75b7f6abf1cbd84fd247c0cb0651698444df8c9bf30e62120fbbc52269d6
+  languageName: node
+  linkType: hard
+
+"react-console@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "react-console@workspace:."
+  dependencies:
+    "@rollup/plugin-typescript": ^8.3.3
+    "@types/react": ^18.0.14
+    classnames: ^2.3.1
+    node-sass: ^7.0.1
+    react-icons: ^4.4.0
+    rollup: ^2.75.7
+    rollup-plugin-delete: ^2.0.0
+    rollup-plugin-scss: ^3.0.0
+    rollup-plugin-terser: ^7.0.2
+    tslib: ^2.4.0
+    typescript: ^4.7.4
+  peerDependencies:
+    classnames: ^2.3.1
+    react: ^17
+    react-dom: ^17
+    react-icons: ^4.4.0
+  languageName: unknown
+  linkType: soft
+
+"react-icons@npm:^4.4.0":
+  version: 4.4.0
+  resolution: "react-icons@npm:4.4.0"
+  peerDependencies:
+    react: "*"
+  checksum: dd93a1dcc8ac8a3cf46a2b33e80b586fa967331fa5fcb90d061abf276155a8363a331643e203d67cb9bab4261d00a757da854bcce1fce2c6e4258bf3e33f711b
   languageName: node
   linkType: hard
 

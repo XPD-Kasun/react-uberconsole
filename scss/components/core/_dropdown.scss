@@ -1,11 +1,88 @@
 .dropdown {
-       .dropdown-container {}
+
+       &.opened .label-icon>svg {
+              transform: rotate(180deg);
+       }
+
+       .dropdown-container {
+              cursor: pointer;
+              position: relative;
+       }
 
        .dropdown-display-label {
-              padding: 7px 12px;
+              padding: 7px 7px 7px 12px;
               border: 1px solid #aab7b8;
               box-sizing: border-box;
               background: #ffffff;
+              display: flex;
+
+              .label-text {
+                     flex: 1;
+              }
+
+              .label-icon {
+                     width: 20px;
+                     height: 20px;
+                     display: flex;
+                     align-items: center;
+              }
+       }
+
+
+       .dropdown-popup-container {
+              border: 1px solid #d7d7d7;
+              border-top: none;
+       }
+
+       .dropdown-popup {
+              position: absolute;
+              width: 100%;
+              z-index: 100;
+       }
+
+       ul.dropdown-items {
+              list-style: none;
+              padding: 0;
+              margin: 0;
+              max-height: 200px;
+              overflow: auto;
+              user-select: none;
+       }
+
+       ul.dropdown-items>li {
+              background: white;
+       }
+
+       .dropdown-items li:last-child .dropdown-item-content {
+              border-bottom: none;
+       }
+
+       .dropdown-item-content {
+              padding: 7px 10px;
+              border: 1px solid white;
+              border-bottom: 1px solid #ececec;
+              box-sizing: border-box;
+       }
+
+       .dropdown-item-content:hover {
+              border: 1px solid #90a7b6;
+       }
+
+       .search-container {
+              border-bottom: 1px solid #ececec;
+              border-top: none;
+              display: flex;
+              background: white;
+
+              & .textbox {
+                     flex: 1;
+              }
+       }
+
+       .search-icon {
+              display: flex;
+              align-items: center;
+              padding: 5px 0 5px 10px;
        }
 }
 
