@@ -1,0 +1,30 @@
+footer.footer-fs {
+       background: #384960;
+       min-height: var(--footer-min-height);
+
+       a {
+              color: white;
+              text-decoration: none;
+
+              &:hover {
+                     color: #ec8f71;
+              }
+       }
+
+       &.is-fixed { 
+              position: fixed;
+              bottom: 0;
+              left: 0;
+              width: 100%;
+              z-index: 120;
+       }
+
+       .footer-wrap {
+              color: white;
+              text-align: center;
+              font-size: 12px;
+              display: flex;
+              flex-direction: row;
+              padding: 7px;
+       }
+}

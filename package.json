@@ -1,23 +1,29 @@
 {
-  "name": "react-console",
-  "version": "1.0.0",
+  "name": "react-uberconsole",
+  "version": "1.0.1",
   "description": "A modular light weight backend console framework for react.",
   "main": "dist/index.js",
-  "repository": "https://github.com/XPD-Kasun/BackPort.git",
+  "repository": "https://github.com/XPD-Kasun/react-uberconsole.git",
   "author": "XPDKasun <kasunx.kelaniya@gmail.com>",
   "license": "MIT",
   "scripts": {
     "build": "rollup --config rollup-config.prod.js",
-    "build-dev": "rollup --config rollup-config.dev.js",
+    "build-dev": "rollup --config rollup-config.dev.js --watch",
     "watch-css": "node-sass --watch scss/index.scss dist/styles.css",
+    "watch": "yarn build-dev && watch-css",
     "test": ""
   },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.3",
+    "@types/nprogress": "^0.2.0",
     "@types/react": "^18.0.14",
+    "@types/react-dom": "^18.0.6",
     "classnames": "^2.3.1",
     "node-sass": "^7.0.1",
+    "react": "^17",
+    "react-dom": "^17",
     "react-icons": "^4.4.0",
+    "react-router-dom": "^6.3.0",
     "rollup": "^2.75.7",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-scss": "^3.0.0",
@@ -31,5 +37,8 @@
     "react": "^17",
     "react-dom": "^17",
     "react-icons": "^4.4.0"
+  },
+  "dependencies": {
+    "nprogress": "^0.2.0"
   }
 }

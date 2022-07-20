@@ -6,7 +6,7 @@ function FrameworkButton(props: FrameworkButtonProps) {
        const onBtnClick = (evt) => {
 
               if (props.isEnabled) {
-                     props.onClick(evt);
+                     props.onClick && props.onClick(evt);
               }
 
        };

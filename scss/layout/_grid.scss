@@ -1,0 +1,43 @@
+$nCols : 12;
+$tabWidth: 768px; // md 
+$deskWidth: 1024px; // lg
+$wideWidth: 1215px; // xl
+
+$colWidth: #{100/$nCols}#{'%'};
+    
+@mixin gen-items($lbl, $cols) {
+    
+    %#{$lbl}-0 {
+        width: #{100/$nCols}#{'%'} !important;
+    } 
+       @for $i from 1 through $cols {
+              
+              .#{$lbl}-#{$i} {
+                    @extend %#{$lbl}-0;
+                    flex-grow: $i;
+              }
+
+       }
+}
+
+.grid {
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+
+       &>div {
+              width: 100%;
+       }
+}
+
+@media(min-width: $tabWidth) {
+       @include gen-items('md', $nCols);
+}
+
+@media(min-width: $deskWidth) {
+       @include gen-items('lg', $nCols);
+}
+
+@media(min-width: $wideWidth) {
+       @include gen-items('xl', $nCols);
+}

@@ -1,0 +1,21 @@
+.container {
+       margin: $container-margin;
+       padding: $container-margin;
+}
+
+.panel {
+       padding-top: $panel-margin;
+       padding-bottom: $panel-margin;
+}
+
+.va-flex {
+       display: flex;
+       flex: 1;
+       flex-direction: row;
+}
+
+.ha-flex {
+       display: flex;
+       flex: 1;
+       flex-direction: column;
+}

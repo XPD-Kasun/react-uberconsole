@@ -1,24 +1,34 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { DropdownProps } from './types';
 import { TextBox } from '../textbox';
 import getItem from '../../../shared/getSelectedItem';
-import { IoSearch, IoChevronDownOutline } from 'react-icons/io5';
+import { IoSearch, IoChevronDownOutline, IoTvOutline } from 'react-icons/io5';
 
 
-function FrameworkDropdown({ className = "dropdown", dataSource, onSearchChange, selectedId, labelComponent, listItemComponent }: DropdownProps) {
+function FrameworkDropdown({
+       className = "dropdown",
+       isBlur = true,
+       dataSource,
+       onSearchChange,
+       selectedId,
+       labelComponent,
+       listItemComponent }: DropdownProps) {
 
        let [selectedItem, setSelectedItem] = useState(getItem(dataSource, selectedId));
        let [isOpen, setIsOpen] = useState(false);
+       let ref = useRef<HTMLDivElement>();
 
        let LabelComponent = labelComponent;
        let ListItemComponent = listItemComponent;
 
-       if(isOpen) {
+       if (isOpen) {
               className += ' opened';
        }
 
-       const onBlur = () => {
-              setIsOpen(false);
+       const onBlur = (evt) => {
+              if (isBlur && !ref.current.contains(evt.relatedTarget)) {
+                     setIsOpen(false);
+              }
        };
 
        const onListItemSelect = (evt, item) => {
@@ -28,14 +38,21 @@ function FrameworkDropdown({ className = "dropdown", dataSource, onSearchChange,
 
        const onLabelClick = () => {
               setIsOpen((isOpen) => !isOpen);
+              ref.current.focus();
        };
 
        const onSearchTermChange = (text) => {
               onSearchChange && onSearchChange(text);
        };
 
+       const onKeyDown = (evt) => {
+              if (evt.key === 'Escape') {
+                     setIsOpen(false);
+              }
+       }
+
        return (
-              <div className={className} onBlur={onBlur}>
+              <div className={className} onBlur={onBlur} ref={ref} tabIndex={0} onKeyDown={onKeyDown}>
                      <div className="dropdown-wrapper">
                             <div className="dropdown-container">
                                    <div className="dropdown-hidden-select">

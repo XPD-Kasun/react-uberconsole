@@ -1,7 +1,30 @@
 @import "theme";
 
+@import "layout/grid";
+@import "layout/shell";
+@import "layout/structure";
+
 @import "components/core/button";
 @import "components/core/dropdown";
 @import "components/core/checkbox";
 @import "components/core/option";
+@import "components/core/overlay";
 @import "components/core/textbox";
+
+@import "components/widgets/snap";
+@import "components/widgets/infopanel";
+
+@import "components/blocks/appshell";
+@import "components/blocks/footer";
+//@import "layout/nprogress";
+
+@import "../node_modules/nprogress/nprogress.css";
+
+
+body {
+       background: $root-background;
+}
+
+:root {
+       --footer-min-height: #{$footer-min-height};
+}

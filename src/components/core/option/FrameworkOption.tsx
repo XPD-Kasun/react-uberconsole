@@ -20,7 +20,10 @@ function FrameworkOption({ isEnabled, isChecked, className = "option", id, name,
                      <div className="option-container">
                             <div className="button-container">
                                    <div className="option-button">
-                                          <div className="option-dot"></div>
+                                          <svg version="1.1" width="16" height="16">
+                                                 <circle cx="8" cy="8" r="7" stroke="#6d6d6d" fill="#fff"/>
+                                                 <circle className="option-dot" cx="8" cy="8" r="5" fill="#ff5722" />
+                                          </svg>
                                    </div>
                                    <div style={{display: "none"}}>
                                           <input type="radio" value={id} name={name} checked={isChecked} />

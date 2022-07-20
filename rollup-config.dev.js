@@ -9,9 +9,9 @@ const developmentConfig = {
               format: "cjs"
        },
        plugins: [
-              del({
-                     targets: 'dist/*'
-              }),
+              // del({
+              //        targets: 'dist/*'
+              // }),
               tsPlugin(),
               scss({
                      output: './dist/styles.css'
