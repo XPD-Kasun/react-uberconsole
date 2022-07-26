@@ -9,10 +9,20 @@ $primary-color: green;
 
 $panel-margin: 20px;
 $container-margin: 8px;
+
+$pageContainer-margin: 20px 30px;
+$pageContainer-padding: 0;
+
+
 $root-background: #f3f3f3;
+
+$header-background:#0d465e;
+$footer-background:#0d465e;
 
 $shell-navigation-width: 240px;
 $shell-sidebar-background: white;
 $shell-sidebar-border: 1px solid #ccc;
+
+$popup-boxshadow: white 0px 0px 0px 0px, rgba(15, 23, 42, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
 
 $footer-min-height: 30px;

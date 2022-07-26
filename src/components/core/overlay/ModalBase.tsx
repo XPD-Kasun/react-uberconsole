@@ -27,7 +27,7 @@ function ModalBase({ className, children, isShowing }: ModalProps) {
        });
 
        return (             
-              retainContent && <Overlay isShowing={isShowing}>
+              retainContent && <Overlay className="glass" isShowing={isShowing}>
                      <div className={cls}>
                             {
                                    children

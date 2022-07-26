@@ -1,3 +1,8 @@
+.page-container {
+       margin: $pageContainer-margin;
+       padding: $pageContainer-padding;
+}
+
 .container {
        margin: $container-margin;
        padding: $container-margin;
@@ -8,13 +13,17 @@
        padding-bottom: $panel-margin;
 }
 
-.va-flex {
+.flex {
+       display: flex;
+}
+
+.v-flex {
        display: flex;
        flex: 1;
        flex-direction: row;
 }
 
-.ha-flex {
+.h-flex {
        display: flex;
        flex: 1;
        flex-direction: column;

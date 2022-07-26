@@ -13,5 +13,17 @@
               border: none;
               font-size: 16px;
               outline: none;
+              background: transparent;
+              color: inherit;
+       }
+}
+
+.search {
+       display: flex;
+       align-items: center;
+       padding: 0px 10px;
+
+       & .textbox {
+              background: transparent;
        }
 }

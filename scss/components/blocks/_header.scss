@@ -1,0 +1,14 @@
+.header-main {
+       font-size: 14px;
+
+       .header-container {
+              background: $header-background;
+       }
+
+       .header-wrapper {
+              min-height: 40px;
+              width: 100%;
+              display: flex;
+              align-items: center;
+       }
+}

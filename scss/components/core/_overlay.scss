@@ -4,11 +4,14 @@
     right: 0;
     bottom: 0;
     left: 0;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 10000;
-    will-change: backdrop-filter, background;
-    transition: backdrop-filter, background 0.5s;
-    backdrop-filter: blur(2px);
+
+    &.glass {
+        background: rgba(0, 0, 0, 0.2);
+        z-index: 10000;
+        will-change: backdrop-filter, background;
+        transition: backdrop-filter, background 0.5s;
+        backdrop-filter: blur(2px);
+    }
 
     &.close {
         backdrop-filter: blur(0);
@@ -29,21 +32,30 @@
     max-width: 600px;
 
     .modal-box {
-        box-shadow: rgb(255, 255, 255) 0px 0px 0px 0px, rgba(15, 23, 42, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
+        box-shadow: $popup-boxshadow;
         border-radius: 7px;
         background: #ffffff;
         margin: 0 20px;
         border: 0px solid #c1c8d5;
-        animation: modalOpen 0.2s ease-in forwards;
-        
+        animation: modalOpen 0.2s ease forwards;
+
     }
-    
+
     &.close {
         .modal-box {
             animation: modalClose 0.2s ease-in forwards;
         }
     }
 
+}
+
+.popover {
+    position: absolute;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: $popup-boxshadow;
+    background: white;
 }
 
 
@@ -64,12 +76,12 @@
 
 @keyframes modalOpen {
     0% {
-        transform: scale(0.2);
+        transform: translateY(-50px);
         opacity: 0.2;
     }
 
     100% {
-        transform: scale(1);
+        transform: translateY(0);
         opacity: 1;
     }
 }

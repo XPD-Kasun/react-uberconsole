@@ -14,6 +14,7 @@ export * from './components/widgets/infopanel';
 export * from './components/blocks/appshell';
 export * from './components/blocks/footer';
 export * from './components/blocks/containers';
+export * from './components/blocks/header';
 
 export type { ModuleConfig };
 

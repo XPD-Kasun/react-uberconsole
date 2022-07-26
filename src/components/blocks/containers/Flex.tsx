@@ -1,27 +1,24 @@
+import React from 'react';
+import cx from 'classnames';
 import { Align, FlexProps, Direction } from "./types";
 
-export function Flex({ children, direction=Direction.Row, align = Align.Left}: FlexProps) {
+export function Flex({ className, children, direction = Direction.Row, align = Align.Left, xalign = Align.Center }: FlexProps) {
 
-       let cls = 'va-flex';
+       let cls = 'v-flex';
 
-       if(direction == Direction.Column) {
-              cls = 'ha-flex';
+       if (direction == Direction.Column) {
+              cls = 'h-flex';
        }
+
+       cls = cx({
+              [cls]: true,
+              [className]: className
+       });
 
        let style = {
-              justifyContent: 'start'
+              justifyContent: align,
+              alignItems: xalign
        };
-
-       switch (align) {
-              case Align.Right:
-                     style.justifyContent = 'end';
-                     break;
-
-              case Align.Center:
-                     style.justifyContent = 'center';
-                     break;
-       }
-
 
        return (
               <div className={cls} style={style}>
@@ -33,9 +30,4 @@ export function Flex({ children, direction=Direction.Row, align = Align.Left}: F
 
 }
 
-
-export function FlexItem() {
-
-       
-
-}
+export default React.memo(Flex);

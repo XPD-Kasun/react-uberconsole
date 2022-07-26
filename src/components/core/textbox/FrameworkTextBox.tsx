@@ -1,15 +1,16 @@
+import cx from 'classnames';
 import { useState } from "react";
 
-function FrameworkTextBox({className="textbox", hasBorder=true, placeholder, onChange, isEnabled = true}) {
+
+function FrameworkTextBox({className = '', hasBorder=true, placeholder, onChange, isEnabled = true}) {
 
        let [text, setText] = useState('');
-
-       if(!isEnabled) {
-              className += ' disabled';
-       }
-       if(!hasBorder) {
-              className += ' no-border';
-       }
+       let cls = cx({
+              [className]: className,
+              "textbox": true,
+              disabled: !isEnabled,
+              'no-border': !hasBorder
+       });
 
        const _onChange = (evt) => {
 
@@ -22,7 +23,7 @@ function FrameworkTextBox({className="textbox", hasBorder=true, placeholder, onC
        }
 
        return(
-              <div className={className}>
+              <div className={cls}>
                      <input type="text" placeholder={placeholder} className="text" onChange={_onChange} value={text} />
               </div>
        )

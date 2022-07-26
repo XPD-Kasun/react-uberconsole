@@ -172,6 +172,7 @@
        left: 0;
        right: 0;
        bottom: 0;
+       animation: fade-blur 0.5s ease forwards;   
 }
 
 .spinner-container {
@@ -193,7 +194,7 @@
        border-left: 2px solid transparent;
        border-bottom: 2px solid transparent;
        box-sizing: content-box;
-       animation: rotate 0.7s linear infinite;
+       animation: rotate 0.7s linear infinite forwards;
 }
 
 @keyframes rotate {
@@ -203,5 +204,14 @@
 
        100% {
               transform: rotate(360deg);
+       }
+}
+
+@keyframes fade-blur {
+       0% {
+              backdrop-filter: blur(0);
+       }
+       100% {
+              backdrop-filter: blur(2px);
        }
 }

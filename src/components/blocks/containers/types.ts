@@ -1,9 +1,11 @@
 import { ReactChildren } from "../../../types";
 
 export enum Align {
-       Left = 'left',
-       Right = 'right',
-       Center = 'center'
+       Left = 'start',
+       Right = 'end',
+       Center = 'center',
+       Top = 'start',
+       Bottom = 'end'
 }
 
 export enum Direction {
@@ -15,6 +17,7 @@ export enum Direction {
 export interface FlexProps {
        children: ReactChildren,
        align: Align,
+       xalign: Align,
        direction: Direction,
        className: string
 }

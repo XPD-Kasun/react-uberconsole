@@ -1,3 +1,5 @@
 import FrameworkTextBox from "./FrameworkTextBox";
+import SearchTextBox from "./SearchTextBox";
 
-export {FrameworkTextBox as TextBox};
+
+export {SearchTextBox, FrameworkTextBox as TextBox};
