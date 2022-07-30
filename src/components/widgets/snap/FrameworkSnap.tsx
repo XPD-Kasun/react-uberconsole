@@ -1,7 +1,6 @@
 
 
-function FrameworkSnap({ className = "snap", header, content, children }) {
-
+function FrameworkSnap({ className = "snap", header, children }) {
 
        return (
               <div className={className}>
@@ -12,11 +11,15 @@ function FrameworkSnap({ className = "snap", header, content, children }) {
                                    }
                             </div>
                      </div>
-                     <div className="content">
-                            {
-                                   content
-                            }
-                     </div>
+                     {
+                            children && (
+                                   <div className="content">
+                                          {
+                                                 children
+                                          }
+                                   </div>
+                            )
+                     }
               </div>
        )
 }

@@ -1,8 +1,9 @@
 import React from 'react';
+import cx from "classnames";
 import Overlay from './Overlay';
 import { PopoverProps, PopoverWithRefProps } from './types';
 
-function Popover({ popoverRef, x, y, children, isShowing, overlayBounds, onOverlayClick, showOverlay = true }: PopoverWithRefProps) {
+function Popover({ className, popoverRef, x, y, children, isShowing, overlayBounds, onOverlayClick, showOverlay = true }: PopoverWithRefProps) {
 
        if (!overlayBounds) {
               overlayBounds = {
@@ -13,6 +14,10 @@ function Popover({ popoverRef, x, y, children, isShowing, overlayBounds, onOverl
               };
        }
 
+       let cls = cx({
+              [className]: className,
+              'popover': true
+       });
 
        if (showOverlay) {
               return (
@@ -22,7 +27,7 @@ function Popover({ popoverRef, x, y, children, isShowing, overlayBounds, onOverl
                             isShowing={isShowing}
                             overlayBounds={overlayBounds}>
 
-                            <div className="popover" style={{ top: y, left: x }} ref={popoverRef}>
+                            <div className={cls} style={{ top: y, left: x }} ref={popoverRef}>
                                    <div className="popover-menu" onClick={e => onOverlayClick(null)}>
                                           {
                                                  children

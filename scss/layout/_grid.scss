@@ -30,14 +30,14 @@ $colWidth: #{100/$nCols}#{'%'};
        }
 }
 
-@media(min-width: $tabWidth) {
+@media screen and (min-width: $tabWidth) {
        @include gen-items('md', $nCols);
 }
 
-@media(min-width: $deskWidth) {
+@media screen and (min-width: $deskWidth) {
        @include gen-items('lg', $nCols);
 }
 
-@media(min-width: $wideWidth) {
+@media screen and (min-width: $wideWidth) {
        @include gen-items('xl', $nCols);
 }

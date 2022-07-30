@@ -17,8 +17,9 @@ export type Bounds = {
 export interface PopoverProps {
     x: number,
     y: number,
+    className?: string,
     isShowing: boolean,
-    overlayBounds: Bounds,
+    overlayBounds?: Bounds,
     showOverlay: boolean,
     children: ReactChildren,
     onOverlayClick: (evt: MouseEvent) => void
@@ -26,4 +27,10 @@ export interface PopoverProps {
 
 export interface PopoverWithRefProps extends PopoverProps {
     popoverRef: any
+}
+
+export interface ContextMenuProps {
+    children: ReactChildren,
+    target?: HTMLElement,
+    className?: string
 }
