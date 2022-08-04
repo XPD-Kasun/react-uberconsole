@@ -1,4 +1,4 @@
-import { ModuleConfig, ReactChildren } from "../../../types"
+import { Module, ModuleConfig, ReactChildren } from "../../../types"
 
 export interface SidebarSubItem {
        name: string,
@@ -24,9 +24,14 @@ export interface SidebarNavigationSectionProps {
 }
 
 export interface AppShellProps {
-       moduleConfig: ModuleConfig,
        children?: ReactChildren,
        modulePath: string,
        sidebar?: ReactChildren,
        sidebarMaxHeight: number|string
+}
+
+export interface ModuleLinkProps {
+       module?: string,
+       subModule: string,
+       children: ReactChildren
 }

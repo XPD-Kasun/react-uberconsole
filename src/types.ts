@@ -33,8 +33,8 @@ type Modules = {
 };
 
 export interface ModuleConfig {
-
        appName: string,
        modules: Module[],
+       rootPath: string,
        moduleErrorComponent: ReactChildren,
 }

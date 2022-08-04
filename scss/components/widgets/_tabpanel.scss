@@ -1,0 +1,33 @@
+.tabpanel {
+       .header {
+              padding: 0;
+       }
+
+       .tab-set {
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+       }
+
+       .tab-container {
+              padding: 10px 20px;
+              border-right: 1px solid #ccc;
+              position: relative;
+              cursor: pointer;
+
+              &.is-active {
+                     
+                     &:after {
+                            content: '';
+                            display: block;
+                            right: 5px;
+                            margin: auto;
+                            height: 2px;
+                            background: #0d465e;
+                            position: absolute;
+                            left: 3px;
+                            bottom: 0px;
+                     }
+              }
+       }
+}

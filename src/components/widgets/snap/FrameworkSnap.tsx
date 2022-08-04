@@ -1,9 +1,15 @@
+import cx from "classnames";
 
+function FrameworkSnap({ className, header, children }) {
 
-function FrameworkSnap({ className = "snap", header, children }) {
+       let cls = cx({
+              "snap": true,
+              [className]: className
+       });
+
 
        return (
-              <div className={className}>
+              <div className={cls}>
                      <div className="header">
                             <div className="header-container">
                                    {

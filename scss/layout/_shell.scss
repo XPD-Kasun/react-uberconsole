@@ -1,5 +1,28 @@
 .page-title {
     font-size: 32px;
     color: #000000;
-    margin-top: 30px;
+    padding-top: 17px;
+    font-weight: normal;
+}
+
+@mixin headingStyles {
+
+    color: #000000;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    @include headingStyles;
+}
+
+a {
+    color: #114ea2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: blue;
 }
