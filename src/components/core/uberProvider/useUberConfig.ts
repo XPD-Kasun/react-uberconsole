@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { UberConsoleContext } from './UberProvider';
+import { UberConsoleContext } from './UberConsoleProvider';
 
 function useUberConfig() {
 

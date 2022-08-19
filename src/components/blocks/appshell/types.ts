@@ -1,37 +1,39 @@
+import { SidebarItemWithModules } from "../../../shared/getSidebarItems"
 import { Module, ModuleConfig, ReactChildren } from "../../../types"
 
-export interface SidebarSubItem {
+export interface SidebarItem {
        name: string,
        path: string,
        order: number
 }
 
-export interface SidebarItem {
-       path: string,
-       name: string,
-       hasLayout: boolean,
-       subItems: SidebarSubItem[]
-}
-
 export interface SNSIP {
        className?: string,
-       itemList: SidebarItem[]
+       items: SidebarItemWithModules[],
+       //itemList: SidebarItem[]
 }
 
 export interface SidebarNavigationSectionProps {
-       className?: string,
-       config: ModuleConfig
+       className?: string
 }
 
 export interface AppShellProps {
        children?: ReactChildren,
        modulePath: string,
        sidebar?: ReactChildren,
-       sidebarMaxHeight: number|string
+       height: number|string,
+       mobileMenu: ReactChildren
 }
 
 export interface ModuleLinkProps {
        module?: string,
+       className?: string,
        subModule: string,
-       children: ReactChildren
+       children: ReactChildren,
+       queryString?: URLSearchParams | string,
+       hash?: string
+}
+
+export interface LoaderProps {
+       loaderElement?: ReactChildren
 }

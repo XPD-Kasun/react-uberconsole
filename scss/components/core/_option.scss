@@ -1,5 +1,14 @@
 .option {
        cursor: pointer;
+       user-select: none;
+
+       &.disabled {
+              cursor: default;
+
+              .option-label {
+                     color: gray;
+              }
+       }
 
        .button-container {
               padding: 5px;
@@ -22,12 +31,21 @@
               align-items: center;
        }
 
-       .option-dot {    
+       .option-dot {
               fill: #fff;
        }
-       
-       &.checked .option-dot{
-              fill: #ff5722;
+
+       &.checked {
+
+              .option-dot {
+                     fill: #ff5722;
+              }
+
+              &.disabled {
+                     .option-dot {
+                            fill: gray;
+                     }
+              }
        }
-       
+
 }

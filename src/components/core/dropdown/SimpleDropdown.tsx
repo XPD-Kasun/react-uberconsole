@@ -20,9 +20,13 @@ function ListItem({ item, onSelect }) {
        )
 }
 
-function SimpleDropdown({ className = "dropdown", dataSource, selectedId, textSelector }: SimpleDropdownProps) {
+function SimpleDropdown({ className = "dropdown", dataSource, selectedId, textSelector, isEnabled }: SimpleDropdownProps) {
 
        let [searchTerm, setSearchTerm] = useState('');
+
+       if(!dataSource.idSelector || !textSelector) {
+              throw new Error("For dropdown to work an idSelector and a textSelector is needed. Make sure both are provided. idSelector is provided via dataSource prop and textSelector is provided directly as a prop. See the documentation on how to use Dropdown component")
+       }
 
        let memoizedDataSource = useMemo<ControlDataSource>(() => {
 
@@ -34,7 +38,7 @@ function SimpleDropdown({ className = "dropdown", dataSource, selectedId, textSe
               dataSourceCopy.data = dataSource.data.filter(x => {
                      if (searchTerm) {
                      
-                            if (textSelector(x).indexOf(searchTerm) > -1) {
+                            if (textSelector(x).toLowerCase().indexOf(searchTerm.toLowerCase()) > -1) {
                                    return true;
                             }
                             return false;
@@ -63,6 +67,7 @@ function SimpleDropdown({ className = "dropdown", dataSource, selectedId, textSe
                      className={className}
                      dataSource={memoizedDataSource}
                      selectedId={selectedId}
+                     isEnabled={isEnabled}
                      labelComponent={DefaultLabal}
                      listItemComponent={ListItem}
                      onSearchChange={onSearchChange}>

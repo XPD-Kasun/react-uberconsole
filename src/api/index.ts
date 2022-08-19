@@ -1,5 +1,5 @@
-import useLocation from "./useLocation";
+import useCurrentModule from "./useCurrentModule";
 
 export {
-       useLocation
+       useCurrentModule
 };

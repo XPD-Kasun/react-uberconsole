@@ -4,6 +4,14 @@
               transform: rotate(180deg);
        }
 
+       &.disabled {
+              .dropdown-display-label {
+                     border: 1px solid #c4c4c4;
+                     color: gray;
+                     background: #f2f2f2;
+              }
+       }
+
        .dropdown-container {
               cursor: pointer;
               position: relative;
@@ -63,13 +71,12 @@
 
        .dropdown-item-content {
               padding: 7px 10px;
-              border: 1px solid white;
               border-bottom: 1px solid #ececec;
               box-sizing: border-box;
        }
 
        .dropdown-item-content:hover {
-              border: 1px solid #90a7b6;
+              background: #eaeaea;
        }
 
        .search-container {

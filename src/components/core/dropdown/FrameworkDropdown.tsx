@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import cx from "classnames";
 import { DropdownProps } from './types';
 import { TextBox } from '../textbox';
 import getItem from '../../../shared/getSelectedItem';
@@ -10,6 +11,7 @@ function FrameworkDropdown({
        isBlur = true,
        dataSource,
        onSearchChange,
+       isEnabled = true,
        selectedId,
        labelComponent,
        listItemComponent }: DropdownProps) {
@@ -21,9 +23,12 @@ function FrameworkDropdown({
        let LabelComponent = labelComponent;
        let ListItemComponent = listItemComponent;
 
-       if (isOpen) {
-              className += ' opened';
-       }
+       let cls = cx({
+              dropdown: true,
+              opened: isOpen,
+              disabled: !isEnabled,
+              [className]: className
+       });
 
        const onBlur = (evt) => {
               if (isBlur && !ref.current.contains(evt.relatedTarget)) {
@@ -37,8 +42,11 @@ function FrameworkDropdown({
        };
 
        const onLabelClick = () => {
-              setIsOpen((isOpen) => !isOpen);
-              ref.current.focus();
+
+              if (isEnabled) {
+                     setIsOpen((isOpen) => !isOpen);
+                     ref.current.focus();
+              }
        };
 
        const onSearchTermChange = (text) => {
@@ -52,11 +60,11 @@ function FrameworkDropdown({
        }
 
        return (
-              <div className={className} onBlur={onBlur} ref={ref} tabIndex={0} onKeyDown={onKeyDown}>
+              <div className={cls} onBlur={onBlur} ref={ref} tabIndex={0} onKeyDown={onKeyDown}>
                      <div className="dropdown-wrapper">
                             <div className="dropdown-container">
                                    <div className="dropdown-hidden-select">
-                                          <select value={dataSource.idSelector(selectedItem)}>
+                                          <select value={dataSource.idSelector(selectedItem)} disabled>
                                                  {
                                                         selectedItem && (
                                                                <option value={dataSource.idSelector(selectedItem)}></option>

@@ -1,3 +1,4 @@
+import cx from "classnames";
 import { ReactChildren } from '../../../types';
 import { FrameworkButtonProps } from './types';
 
@@ -19,9 +20,15 @@ function FrameworkButton(props: FrameworkButtonProps) {
        else {
               content = props.children;
        }
+       
+       let cls = cx({
+              btn: true,
+              disabled: !props.isEnabled,
+              [props.className]: props.className       
+       });
 
        return (
-              <button type={props.type} className={props.className} onClick={onBtnClick}>
+              <button type={props.type} className={cls} onClick={onBtnClick}>
                      { content}
               </button>
        )

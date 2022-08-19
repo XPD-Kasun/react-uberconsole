@@ -24,7 +24,7 @@ function FrameworkTextBox({className = '', hasBorder=true, placeholder, onChange
 
        return(
               <div className={cls}>
-                     <input type="text" placeholder={placeholder} className="text" onChange={_onChange} value={text} />
+                     <input disabled={!isEnabled} type="text" placeholder={placeholder} className="text" onChange={_onChange} value={text} />
               </div>
        )
 

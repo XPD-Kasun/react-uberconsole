@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FrameworkSnap from "../snap/FrameworkSnap";
 import { TabPanelProps } from "./types";
 import TabPage from "./TabPage";
@@ -56,10 +56,20 @@ function TabPanel({ children }: TabPanelProps) {
               }
        });
 
+
        let [selectedTab, setSelectedTab] = useState<{id: number, content: ReactChildren}>({
               id: 0,
               content: componentMap[0].content
        });
+
+       useEffect(() => {
+              console.log('rr')
+              setSelectedTab({
+                     content: componentMap[selectedTab.id].content,
+                     id: selectedTab.id
+              });
+
+       }, [children]);
 
        const onTabSelect = (id) => {
 

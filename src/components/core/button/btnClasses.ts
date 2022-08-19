@@ -1,7 +1,7 @@
 export const btnClasses = {
-       primary: "btn btn-primary",
-       default: "btn btn-default",
-       danger: "btn btn-danger"
+       primary: "primary",
+       warning: "warning",
+       danger: "danger"
 };
 
 export default btnClasses;

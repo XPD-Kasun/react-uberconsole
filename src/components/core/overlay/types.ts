@@ -15,8 +15,6 @@ export type Bounds = {
 };
 
 export interface PopoverProps {
-    x: number,
-    y: number,
     className?: string,
     isShowing: boolean,
     overlayBounds?: Bounds,

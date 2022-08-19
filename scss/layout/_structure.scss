@@ -8,9 +8,20 @@
        padding: $container-margin;
 }
 
+.center-block {
+       display: flex;
+       justify-content: center;
+       align-items: center;
+}
+
 .panel {
        padding-top: $panel-margin;
        padding-bottom: $panel-margin;
+}
+
+.snap .panel {
+       padding-top: $panel-margin/2;
+       padding-bottom: $panel-margin/2;
 }
 
 .flex {
@@ -27,4 +38,39 @@
        display: flex;
        flex: 1;
        flex-direction: column;
+}
+
+@for $i from 0 through length($space-map) {
+       .mb-#{$i} {
+              margin-bottom: (map-get($space-map, $i)) !important;
+       }
+
+       .pb-#{$i} {
+              padding-bottom: (map-get($space-map, $i)) !important;
+       }
+       
+       .mt-#{$i} {
+              margin-top: (map-get($space-map, $i)) !important;
+       }
+       
+       .pt-#{$i} {
+              padding-top: (map-get($space-map, $i)) !important;
+       }
+       
+       .ml-#{$i} {
+              margin-left: (map-get($space-map, $i)) !important;
+       }
+       
+       .pl-#{$i} {
+              padding-left: (map-get($space-map, $i)) !important;
+       }       
+       
+       .mr-#{$i} {
+              margin-right: (map-get($space-map, $i)) !important;
+       }
+
+       .pr-#{$i} {
+              padding-right: (map-get($space-map, $i)) !important;
+       }
+       
 }

@@ -1,3 +1,4 @@
-import FrameworkCheckBox from "./FrameworkCheckBox";
+import Switch from "./Switch";
+import CheckBox from "./CheckBox";
 
-export {FrameworkCheckBox as Checkbox};
+export { Switch, CheckBox };

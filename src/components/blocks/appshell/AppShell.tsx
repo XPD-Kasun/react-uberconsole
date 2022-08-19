@@ -1,19 +1,19 @@
-import { useMemo, Suspense, lazy, useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import getItemList from "../../../shared/getItemList";
+import React, { useMemo, Suspense, lazy, useState, MouseEvent } from "react";
+import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom";
 import normalizeRootPath from "../../../shared/normalizeRootPath";
 import { ErrorBoundary } from "../../core/errorBoundary";
 import { useUberConfig } from "../../core/uberProvider";
 import AppShellUI from "./AppShellUI";
 import Loader from "./Loader";
-import Sidebar, { SidebarNavigationSection, SidebarNavigationSectionInternal } from "./Sidebar";
+import Sidebar, { SidebarNavigationSection } from "./Sidebar";
+import breakPoints from '../../../shared/breakPoints';
 import { AppShellProps } from "./types";
 
 function BasicError() {
        return (
-              <div>
-                     <h2 style={{ textAlign: 'center' }}>An Error Has Occured</h2>
-                     <h5 style={{ textAlign: 'center' }}>Something went wrong</h5>
+              <div className="page-container">
+                     <div className="page-title">Something went wrong</div>
+                     <p>We are working to fix the problem.</p>
               </div>
        )
 };
@@ -34,10 +34,12 @@ function getSuspensedComponent(Component, ErrorUI) {
 }
 
 
-function AppShell({ children, sidebar: CustomSidebar, sidebarMaxHeight = "calc(100vh - var(--footer-min-height))" }: AppShellProps) {
+function AppShell({ children, sidebar: CustomSidebar, height, mobileMenu }: AppShellProps) {
 
-       let [isSidebarCollapse, setIsSidebarCollapse] = useState(false);
+       let isMobile = window.innerWidth < breakPoints.tabWidth;
+
        let moduleConfig = useUberConfig().moduleConfig;
+       let [isSidebarCollapse, setIsSidebarCollapse] = useState(isMobile);
 
        let rootPath = normalizeRootPath(moduleConfig.rootPath);
 
@@ -45,27 +47,69 @@ function AppShell({ children, sidebar: CustomSidebar, sidebarMaxHeight = "calc(1
               setIsSidebarCollapse(isCollapsed => !isCollapsed);
        };
 
+       const onAppShellClick = (evt) => {
+
+              let target: HTMLDivElement = evt.target;
+
+              if (isMobile && evt.target.nodeName == 'A' && target.parentElement.classList.contains("sidebar-label")) {
+                     onSidebarCollapse(evt);
+              }
+
+       };
+
+       let appShellHeight = useMemo(() => {
+
+              if (height.toString().indexOf('calc') > -1) {
+
+                     return height.toString().replace(')', ' - var(--mobile-menu-height))');
+              }
+
+              return height;
+
+       }, [height]);
+
+
        let sidebar = useMemo(() => {
 
-              let itemList = getItemList(moduleConfig);
-
               return (
-                     <Sidebar maxHeight={sidebarMaxHeight} isCollapsed={isSidebarCollapse} onCollapseClick={onSidebarCollapse}>
+                     <Sidebar maxHeight={appShellHeight} isCollapsed={isSidebarCollapse} onCollapseClick={onSidebarCollapse}>
                             {
-                                   !CustomSidebar && <SidebarNavigationSectionInternal itemList={itemList} />
+                                   !CustomSidebar && <SidebarNavigationSection />
                             }
                             {
                                    CustomSidebar
                             }
                      </Sidebar>
               );
-       }, [moduleConfig, isSidebarCollapse, CustomSidebar]);
+       }, [moduleConfig, isSidebarCollapse, CustomSidebar, appShellHeight]);
+
+       let defaultModule = moduleConfig.modules[0];
+
+       for (const module of moduleConfig.modules) {
+
+              if (module.isDefault) {
+                     defaultModule = module;
+                     break;
+              }
+       }
 
 
        return (
               <Router basename={rootPath}>
-                     <AppShellUI sidebar={sidebar}>
+                     <AppShellUI
+                            moduleConfig={moduleConfig}
+                            isSidebarOpen={isSidebarCollapse}
+                            onClick={onAppShellClick}
+                            sidebar={sidebar}
+                            height={appShellHeight}
+                            onMobileSidebarBtn={(evt) => onSidebarCollapse(evt)}
+                     >
                             <Routes>
+                                   {
+                                          (defaultModule.path !== '/') && (
+                                                 <Route path="/" element={<Navigate to={defaultModule.path} />}></Route>
+                                          )
+                                   }
                                    {
                                           moduleConfig.modules.map(m => {
 
@@ -74,15 +118,8 @@ function AppShell({ children, sidebar: CustomSidebar, sidebarMaxHeight = "calc(1
                                                  if (m.layout) {
                                                         suspensed = getSuspensedComponent(m.layout, moduleConfig.moduleErrorComponent);
                                                  }
-                                                 else if (m.subModules[0].component) {
-                                                        suspensed = getSuspensedComponent(m.subModules[0].component, moduleConfig.moduleErrorComponent);
-                                                 }
                                                  else {
-                                                        suspensed = (
-                                                               <div className="module-not-found">
-                                                                      {moduleConfig.moduleErrorComponent}
-                                                               </div>
-                                                        );
+                                                        suspensed = <Outlet />;
                                                  }
                                                  return (
 
@@ -91,10 +128,20 @@ function AppShell({ children, sidebar: CustomSidebar, sidebarMaxHeight = "calc(1
                                                                       m.subModules.map(subModule => {
 
                                                                              let suspendedSubModule =
-                                                                                    getSuspensedComponent(subModule.component, moduleConfig.moduleErrorComponent)
+                                                                                    getSuspensedComponent(subModule.component, moduleConfig.moduleErrorComponent);
+
+                                                                             let subModulePath = subModule.path.substring(1);
+
+                                                                             if (subModule.hasInternalRoutes) {
+                                                                                    if (!subModulePath.endsWith('/')) {
+                                                                                           subModulePath += '/';
+                                                                                    }
+                                                                                    subModulePath += '*';
+                                                                             }
+
                                                                              return (
                                                                                     <Route
-                                                                                           path={subModule.path}
+                                                                                           path={subModulePath}
                                                                                            element={suspendedSubModule}
                                                                                     />
 

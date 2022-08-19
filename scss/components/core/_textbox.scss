@@ -1,7 +1,7 @@
 .textbox {
 
        padding: 7px 10px;
-       border: 1px solid gainsboro;
+       border: 1px solid #aab7b8;
        background: white;
 
        &.no-border{
@@ -11,7 +11,7 @@
        input.text {
               width: 100%;
               border: none;
-              font-size: 16px;
+              font-size: 1.6rem;
               outline: none;
               background: transparent;
               color: inherit;

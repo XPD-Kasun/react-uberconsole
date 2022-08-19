@@ -7,6 +7,7 @@ export interface DropdownProps {
        className: string,
        dataSource: ControlDataSource,
        selectedId: string,
+       isEnabled?: boolean,
        isBlur?: boolean,
        onSearchChange?: (text: string) => void,
        labelComponent: React.FC<{ item: object }>,

@@ -1,6 +1,13 @@
 .app-shell {
+       position: relative;
        display: flex;
        flex-direction: column;
+       --mobile-menu-height: 0px;
+
+       @media screen and (max-width: $tabWidth) {
+              --mobile-menu-height: 26px;
+       }
+
 
        .shell-container {
               flex: 1;
@@ -20,6 +27,7 @@
        .module-area {
               flex: 1;
               background-color: $root-background;
+              overflow: auto;
               position: relative;
        }
 
@@ -29,6 +37,16 @@
               border-right: $shell-sidebar-border;
               height: 100%;
               transition: width ease 0.2s;
+              position: static;
+
+              @media screen and (max-width: $tabWidth) {
+                     width: 100%;
+                     position: fixed;
+
+                     &.collapsed {
+                            width: 0px !important;
+                     }
+              }
 
               &.collapsed {
                      /* transform: translateX(-210px); */
@@ -68,6 +86,10 @@
                      &:active {
                             background: #eaeaea;
                      }
+
+                     @media screen and (max-width: $tabWidth) {
+                            display: none;
+                     }
               }
 
               .sidebar-wrapper {
@@ -98,13 +120,6 @@
                      margin: 0;
               }
 
-              .sidebar-label {
-                     display: flex;
-                     margin: 7px 0px;
-                     cursor: pointer;
-                     user-select: none;
-              }
-
               .collapse {
                      display: flex;
                      align-items: center;
@@ -118,16 +133,46 @@
               .text a {
                      font-weight: bold;
                      color: #555;
-                     font-size: 15px;
+                     font-size: 1.5rem;
                      text-decoration: none;
-              }
-
-              .text {
                      padding-left: 8px;
               }
 
               .sidebar-item {
-                     margin-bottom: 20px;
+
+                     .sidebar-label{
+                            font-size: 1.45rem;
+                            text-decoration: none;
+                            padding-left: 20px;
+                            user-select: none;
+                            margin-bottom: 10px;
+
+                            a {
+                                   color: #3b3b3b;
+                                   text-decoration: none;
+
+                                   &:hover {
+                                          color: #03a9f4;
+                                   }
+
+                                   &.active {
+                                          color: #ff5722;
+                                          font-weight: bold;
+                                   }
+                            }
+                     }
+
+                     &.group {
+                            margin-bottom: 20px;
+
+                            .sidebar-group-label {
+                                   display: flex;
+                                   margin: 10px 0px;
+                                   cursor: pointer;
+                                   user-select: none;
+                                   margin-top: 20px;
+                            }
+                     }
               }
 
               ul.subitem-list {
@@ -137,33 +182,40 @@
               }
 
               li.submenu-list-item {
-                     margin: 10px 0;
-                     padding-left: 21px;
+                     margin: 7px 0;
                      cursor: pointer;
                      user-select: none;
-
-                     &.active {
-
-                            .submenu-item,
-                            .submenu-item a {
-                                   color: #ff5722;
-                                   font-weight: bold;
-                            }
-                     }
-              }
-
-              .submenu-item,
-              .submenu-item a {
-
-                     font-size: 14px;
-                     color: #3b3b3b;
-                     text-decoration: none;
-
-                     &:hover {
-                            color: #03a9f4;
-                     }
               }
        }
+
+       .mobile-sidebar {
+              background: #052f42;
+              display: none;
+
+              .menubtn-container {
+                     margin: 2px;
+              }
+
+              .menu-btn {
+                     padding: 2px;
+                     display: flex;
+                     justify-content: center;
+                     align-items: center;
+                     width: 25px;
+                     border-radius: 3px;
+                     cursor: pointer;
+
+                     &:active {
+                            background: rgba(60, 214, 232, 0.6);
+                     }
+              }
+
+              @media screen and (max-width: $tabWidth) {
+                     display: block;
+              }
+       }
+
+
 }
 
 .module-loading-spinner {
@@ -172,7 +224,7 @@
        left: 0;
        right: 0;
        bottom: 0;
-       animation: fade-blur 0.5s ease forwards;   
+       animation: fade-blur 0.5s ease forwards;
 }
 
 .spinner-container {
@@ -211,6 +263,7 @@
        0% {
               backdrop-filter: blur(0);
        }
+
        100% {
               backdrop-filter: blur(2px);
        }

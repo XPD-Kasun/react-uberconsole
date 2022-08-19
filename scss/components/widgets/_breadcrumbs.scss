@@ -1,0 +1,29 @@
+.breadcrumb-container {
+       padding: 6px;
+
+       .breadcrumbs {
+              display: flex;
+       }
+
+       .breadcrumb {
+              display: flex;
+              justify-content: center;
+              font-size: 1.5rem;
+              font-weight: bold;
+
+              a:hover {
+                     text-decoration: none;
+              }
+
+              .breadcrumb-link {
+                     color: #777;
+              }
+       }
+
+       .sep {
+              padding: 3px 5px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+       }
+}

@@ -2,29 +2,61 @@ $btnFontSize: 14px;
 
 .btn {
        padding: 7px 20px;
-       font-size: 14px;
+       font-size: 1.4rem;
        font-weight: bold;
        border: 1px solid #252c37;
        border-radius: 2px;
        cursor: pointer;
        box-sizing: border-box;
+       background: #fafafa;
        transition: background 0.1s ease-in;
 
-       &.btn-default {
-              background-color: #fff;
-              color: #32393c;
+       &:active {
+              background: #ececec;
+       }
+
+       &.primary {
+              background: #ff7f00;
+              color: white;
+              border: 1px solid #ff7f00;
 
               &:active {
-                     background-color: #f1f1f1;
-                     color: black;
-              }
-
-              &:hover {
-                     color: #2f2f2f;
+                     background: #a65607;
               }
        }
 
-       &.btn-primary {
-              background-color: $primary-color;
+       &.warning {  
+              background: #ede526;
+              color: #393939;
+              border: 1px solid #cfbc15;
+
+              &:active {
+                     background: #cac310;
+              }
+       }
+
+       &.danger {
+              background: #f44848;
+              color: #ffffff;
+              border: 1px solid #b05b5b;
+
+              &:active {
+                     background: #bc3535;
+              }
+
+       }       
+
+       
+
+       &.disabled {
+              border: 1px solid #c4c4c4 !important;
+              color: gray !important;
+              background: white;
+              cursor: default;
+
+              &:active {
+                     background-color: inherit !important;
+                     color: gray !important;
+              }
        }
 }

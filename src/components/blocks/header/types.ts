@@ -4,13 +4,21 @@ import { Bounds } from "../../core/overlay/types";
 
 
 export interface HeaderDropdownProps {
-       isShowing: boolean,
+       id: number,
+       isVisible : boolean,       
+       onChangeVisibility: (id:number, show: boolean) => void,
        showOverlay: boolean,
-       headerHeight: number,
+       overlayOffset?: Bounds,
        title: ReactChildren,
        children: ReactChildren,
+       dropdownClass: string,
        dropdownTopOffset?: number,
        dropdownLeftOffset?: number,
        hideOnOverlayClick: boolean,
-       onDropdownClick: (evt: React.MouseEvent) => void
+       showOnMobile?: boolean
+}
+
+export interface MobileMenuProps {
+       children: ReactChildren,
+       className: string
 }

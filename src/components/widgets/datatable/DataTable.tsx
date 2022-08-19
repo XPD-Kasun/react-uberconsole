@@ -2,14 +2,14 @@ import cx from "classnames";
 import { Button } from "../../core/button";
 import { Action, ColumnMeta, DataTableProps } from "./types";
 
-function getActionButtons(column: ColumnMeta, onActionClick) {
+function getActionButtons(item, column: ColumnMeta, onActionClick) {
 
        return (
               <div className="btn-container">
                      {
                             column.actions.map((action) => {
                                    return (
-                                          <Button onClick={e => onActionClick(action)}>{typeof (action) === 'string' ? action : action.text}</Button>
+                                          <Button onClick={e => onActionClick(action, item)}>{typeof (action) === 'string' ? action : action.text}</Button>
                                    )
                             })
                      }
@@ -52,13 +52,13 @@ function DataTable({ className, dataSource, columnConfig, onAction }: DataTableP
               });
        }
 
-       const onActionClick = (action: (Action | string)) => {
+       const onActionClick = (action: (Action | string), item) => {
 
               if(typeof(action) === 'string') {
-                     onAction && onAction(action);
+                     onAction && onAction(action, item);
               }
               else {
-                     onAction && onAction(action.id);
+                     onAction && onAction(action.id, item);
               }
 
        }
@@ -86,7 +86,7 @@ function DataTable({ className, dataSource, columnConfig, onAction }: DataTableP
                                                                                     return (
                                                                                            <td>
                                                                                                   {
-                                                                                                         getActionButtons(column, onActionClick)
+                                                                                                         getActionButtons(item,column, onActionClick)
                                                                                                   }
                                                                                            </td>
                                                                                     )

@@ -13,6 +13,10 @@
     "watch": "yarn build-dev && watch-css",
     "test": ""
   },
+  "exports": {
+    ".": "./dist",
+    "./router": "./dist/router"
+  },
   "devDependencies": {
     "@rollup/plugin-typescript": "^8.3.3",
     "@types/nprogress": "^0.2.0",

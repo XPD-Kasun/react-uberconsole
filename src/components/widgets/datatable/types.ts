@@ -20,7 +20,7 @@ export interface ColumnConfig {
 
 export interface DataTableProps {
        className: string,
-       onAction?: (command: string) => void,
+       onAction?: (command: string, item: any) => void,
        dataSource: ControlDataSource,
        columnConfig?: ColumnConfig
 

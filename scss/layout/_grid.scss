@@ -4,17 +4,21 @@ $deskWidth: 1024px; // lg
 $wideWidth: 1215px; // xl
 
 $colWidth: #{100/$nCols}#{'%'};
-    
+
 @mixin gen-items($lbl, $cols) {
-    
-    %#{$lbl}-0 {
-        width: #{100/$nCols}#{'%'} !important;
-    } 
+
+       %#{$lbl}-0 {
+              width: #{100/$nCols}#{'%'} !important;
+       }
+
        @for $i from 1 through $cols {
-              
+
               .#{$lbl}-#{$i} {
-                    @extend %#{$lbl}-0;
-                    flex-grow: $i;
+                     width: #{100/$nCols*$i}#{'%'} !important;
+              }
+
+              .fluid .#{$lbl}-#{$i} {
+                     flex: $i;
               }
 
        }
@@ -24,6 +28,8 @@ $colWidth: #{100/$nCols}#{'%'};
        display: flex;
        flex-direction: row;
        flex-wrap: wrap;
+       align-items: center;
+
 
        &>div {
               width: 100%;

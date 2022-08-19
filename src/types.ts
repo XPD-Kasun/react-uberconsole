@@ -1,3 +1,5 @@
+import React from "react";
+
 export type ReactChildren = JSX.Element[] | JSX.Element | React.ReactNode | null
 
 export type KeySelector = (item: object) => string;
@@ -8,29 +10,44 @@ export interface ControlDataSource {
        idSelector: KeySelector
 }
 
-
 export interface SubModule {
+       id: any,
        name: string,
        path: string,
-       component: Promise<{ default: React.ComponentType<any>; }>,
-       showInSideBar: boolean
+       component: Promise<{ default: React.ComponentType<any> }>,
+       hideSidebar?: boolean,
+       hasInternalRoutes?: boolean
 }
 
-type SubModules = {
-       [subModule: string] : SubModule
-};
+export enum SidebarItemType {
+       group = 'group',
+       submodule = 'submodule',
+       link = "link"
+}
+
+export interface SidebarItem {
+       type: SidebarItemType,
+       subModuleId?: any,
+       text?: string,
+       url?: string,
+       className?: string,
+       items?: SidebarItem[]
+}
+
+export interface SidebarConfig {
+       items: SidebarItem[]
+}
 
 export interface Module {
-       name: string ,
+       id: any,
+       name: string,
        path: string,
+       isDefault?: boolean,
+       sidebar?: ReactChildren,
        layout?: Promise<{ default: React.ComponentType<any>; }>,
-       useSidebar: boolean,
+       sidebarConfig: SidebarConfig
        subModules: SubModule[]
 }
-
-type Modules = {
-       [module: string]: Module
-};
 
 export interface ModuleConfig {
        appName: string,

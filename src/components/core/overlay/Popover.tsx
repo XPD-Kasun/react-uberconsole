@@ -3,7 +3,7 @@ import cx from "classnames";
 import Overlay from './Overlay';
 import { PopoverProps, PopoverWithRefProps } from './types';
 
-function Popover({ className, popoverRef, x, y, children, isShowing, overlayBounds, onOverlayClick, showOverlay = true }: PopoverWithRefProps) {
+function Popover({ className, popoverRef, children, isShowing, overlayBounds, onOverlayClick, showOverlay = true }: PopoverWithRefProps) {
 
        if (!overlayBounds) {
               overlayBounds = {
@@ -27,7 +27,7 @@ function Popover({ className, popoverRef, x, y, children, isShowing, overlayBoun
                             isShowing={isShowing}
                             overlayBounds={overlayBounds}>
 
-                            <div className={cls} style={{ top: y, left: x }} ref={popoverRef}>
+                            <div className={cls} ref={popoverRef}>
                                    <div className="popover-menu" onClick={e => onOverlayClick(null)}>
                                           {
                                                  children
@@ -40,7 +40,7 @@ function Popover({ className, popoverRef, x, y, children, isShowing, overlayBoun
        else {
               if (isShowing) {
                      return (
-                            <div className="popover" style={{ top: y, left: x }} ref={popoverRef}>
+                            <div className="popover" ref={popoverRef}>
                                    <div className="popover-menu">
                                           {
                                                  children

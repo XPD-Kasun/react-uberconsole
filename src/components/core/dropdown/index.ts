@@ -1,3 +1,3 @@
 import SimpleDropdown from "./SimpleDropdown";
 
-export { SimpleDropdown };
+export { SimpleDropdown as Dropdown};

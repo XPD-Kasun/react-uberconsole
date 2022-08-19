@@ -1,4 +1,4 @@
-import UberConsoleProvider from "./UberProvider";
+import UberConsoleProvider from "./UberConsoleProvider";
 import useUberConfig from "./useUberConfig";
 
 export {useUberConfig, UberConsoleProvider};

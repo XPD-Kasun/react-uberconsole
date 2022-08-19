@@ -17,6 +17,10 @@
         backdrop-filter: blur(0);
         background: rgba(255, 255, 255, 0.2);
     }
+
+    &.popover-overlay {
+        z-index: 1000;
+    }
 }
 
 .overlay {
@@ -39,6 +43,12 @@
         border: 0px solid #c1c8d5;
         animation: modalOpen 0.2s ease forwards;
 
+        .close-btn {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+
     }
 
     &.close {
@@ -50,7 +60,7 @@
 }
 
 .popover {
-    position: absolute;
+    position: fixed;
     border: 1px solid #d9d9d9;
     border-radius: 10px;
     padding: 10px;
@@ -59,12 +69,16 @@
 }
 
 
+
 .modal-header {
     padding: 10px 15px;
     border-bottom: 1px solid #c1c8d5;
-    font-size: 17px;
+    font-size: 1.7rem;
     text-shadow: 1px 0px grey;
     color: #343434;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
 
 .modal-content {

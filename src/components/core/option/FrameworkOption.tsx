@@ -26,7 +26,7 @@ function FrameworkOption({ isEnabled, isChecked, className = "option", id, name,
                                           </svg>
                                    </div>
                                    <div style={{display: "none"}}>
-                                          <input type="radio" value={id} name={name} checked={isChecked} />
+                                          <input type="radio" value={id} name={name} checked={isChecked} readOnly />
                                    </div>
                             </div>
                             <div className="option-label">

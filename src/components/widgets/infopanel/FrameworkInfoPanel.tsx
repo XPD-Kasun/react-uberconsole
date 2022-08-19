@@ -41,7 +41,7 @@ function FrameworkInfoPanel({ className = "info-panel", icon, onClose, type = in
                      <div className="panel-container">
                             <div className="panel-layer">
                                    <div className="icon">
-                                          <Icon color={iconColor} style={{strokeWidth:3}}/>
+                                          <Icon size="20" color={iconColor} style={{strokeWidth:3}}/>
                                    </div>
                                    <div className="panel-content">
                                           {children}

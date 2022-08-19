@@ -1,21 +1,19 @@
 import { useState } from "react";
 import cx from 'classnames';
 
-export default function FrameworkCheckBox({ className="checkbox", isChecked, isEnabled, onChange, children }) {
-
-       let [_isChecked, setIsChecked] = useState(isChecked);
+export default function FrameworkCheckBox({ className, isChecked, isEnabled = true, value, onChange, toggleComponent, children }) {
 
        let cls = cx({
-              [className]: true,
-              enabled: isEnabled,
-              checked: _isChecked
+              "checkbox": true,
+              [className]: className,
+              disabled: !isEnabled,
+              checked: isChecked
        });
 
        const onClick = () => {
 
               if (isEnabled) {
-                     setIsChecked((isChecked) => !isChecked);
-                     onChange && onChange(_isChecked);
+                     onChange && onChange(isChecked);
               }
 
        };
@@ -24,9 +22,10 @@ export default function FrameworkCheckBox({ className="checkbox", isChecked, isE
               <div className={cls} onClick={onClick}>
                      <div className="checkbox-container">
                             <div className="toggle">
-                                   <div className="knob"></div>
+                                   {toggleComponent}
                             </div>
                             <div className="label">{children}</div>
+                            <input type="checkbox" value={value} checked={isChecked} readOnly/>
                      </div>
               </div>
 
