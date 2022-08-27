@@ -1,16 +1,16 @@
 .page-title {
     font-size: 3.2rem;
-    color: #000000;
+    color: $pageTitleColor;
     padding-top: 17px;
     font-weight: normal;
 }
 
 @mixin headingStyles {
 
-    color: #000000;
+    color: $headingColor;
     font-weight: normal;
-    margin-top: 0;
-    margin-bottom: 0;
+    margin-top: nth($headingMargin,1);
+    margin-bottom: nth($headingMargin,2);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -18,10 +18,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 a {
-    color: #114ea2;
+    color: $anchorColor;
     text-decoration: none;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: $anchorHoverTextDecoration;
 }

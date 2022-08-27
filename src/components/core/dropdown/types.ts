@@ -1,19 +1,22 @@
 import * as React from "react";
-import { KeySelector, ControlDataSource, ReactChildren } from "../../../types";
+import { KeySelector, ControlDataSource, ReactChildren, FormControlProps, BaseProps } from "../../../types";
 
 
-export interface DropdownProps {
-       children: ReactChildren
-       className: string,
+export interface BaseDropdownProps extends BaseProps {
        dataSource: ControlDataSource,
-       selectedId: string,
+       htmlID?: string,
        isEnabled?: boolean,
-       isBlur?: boolean,
+       name?: string,
+       selectedId: string,
        onSearchChange?: (text: string) => void,
        labelComponent: React.FC<{ item: object }>,
        listItemComponent: React.FC<{ item: object, onSelect: (evt: MouseEvent, item: object) => void }>
 }
 
-export interface SimpleDropdownProps extends DropdownProps {
+export interface FrameworkDropdownProps extends BaseDropdownProps {       
+       isBlur?: boolean,
+}
+
+export interface DropdownProps extends BaseDropdownProps {
        textSelector: KeySelector
 }

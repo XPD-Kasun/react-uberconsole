@@ -4,7 +4,7 @@ import { useState } from 'react';
 import getItem from '../../../shared/getSelectedItem';
 
 
-function OptionGroup({ dataSource, name, selectedId, textSelector, isEnabled = true, onChange }: OptionGroupProps) {
+function OptionGroup({htmlID, dataSource, selectedId, name, textSelector, isEnabled = true, onChange }: OptionGroupProps) {
 
        if (!textSelector) {
               throw new Error("A textSelector should be passed in for OptionGroup component to work. OptionGroup name : " + name);
@@ -29,10 +29,11 @@ function OptionGroup({ dataSource, name, selectedId, textSelector, isEnabled = t
                                    return (
                                           <Option
                                                  key={id}
+                                                 value={id}                                          
                                                  isChecked={item === selectedItem}
                                                  isEnabled={isEnabled}
+                                                 htmlID={htmlID}
                                                  onChange={(isSelected) => onOptionChange(isSelected, item)}
-                                                 id={id}
                                                  name={name}>
 
                                                  {textSelector(item)}

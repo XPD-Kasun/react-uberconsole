@@ -1,16 +1,19 @@
 import React from "react";
-import { ReactChildren } from "../../../types";
+import { BaseProps, ReactChildren } from "../../../types";
 import { Bounds } from "../../core/overlay/types";
 
+export interface HeaderProps extends BaseProps {
+       mobileMenuToggle?: ReactChildren,
+       mobileMenu?: ReactChildren
+}
 
-export interface HeaderDropdownProps {
+export interface HeaderDropdownProps extends BaseProps {
        id: number,
        isVisible : boolean,       
        onChangeVisibility: (id:number, show: boolean) => void,
        showOverlay: boolean,
        overlayOffset?: Bounds,
        title: ReactChildren,
-       children: ReactChildren,
        dropdownClass: string,
        dropdownTopOffset?: number,
        dropdownLeftOffset?: number,
@@ -18,7 +21,5 @@ export interface HeaderDropdownProps {
        showOnMobile?: boolean
 }
 
-export interface MobileMenuProps {
-       children: ReactChildren,
-       className: string
+export interface MobileMenuProps extends BaseProps{
 }

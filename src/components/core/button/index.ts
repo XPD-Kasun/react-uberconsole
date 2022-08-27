@@ -1,5 +1,5 @@
 import Button from './Button';
 import BusyButton from './BusyButton';
-import btnClasses from './btnClasses';
+import { ButtonType } from './types';
 
-export { Button, BusyButton, btnClasses };
+export { Button, BusyButton, ButtonType };

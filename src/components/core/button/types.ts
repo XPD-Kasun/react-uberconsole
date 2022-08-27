@@ -1,13 +1,15 @@
 import * as React from "react";
-import { ReactChildren } from "../../../types";
+import { BaseProps, ReactChildren } from "../../../types";
 
-export type ButtonType = 'submit' | 'reset' | 'button' | undefined;
+export enum ButtonType {
+       submit = 'submit',
+       reset = 'reset',
+       button = 'button'
+}
 
-export interface FrameworkButtonProps {
+export interface FrameworkButtonProps extends BaseProps {
+       isEnabled?:boolean,
        type?: ButtonType,
-       className?: string,
-       children: ReactChildren,
-       isEnabled?: boolean,
        onClick?: (evt: React.MouseEvent<HTMLElement>) => void,
        busyContent?: ReactChildren,
        isBusy?: boolean

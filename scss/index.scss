@@ -1,9 +1,12 @@
+// Always include the theme
 @import "theme";
 
+// Include core system
 @import "layout/grid";
 @import "layout/shell";
 @import "layout/structure";
 
+// Core controls
 @import "components/core/button";
 @import "components/core/dropdown";
 @import "components/core/checkbox";
@@ -11,28 +14,20 @@
 @import "components/core/overlay";
 @import "components/core/textbox";
 
+// Widgets
 @import "components/widgets/snap";
 @import "components/widgets/datatable";
 @import "components/widgets/infopanel";
 @import "components/widgets/breadcrumbs";
 @import "components/widgets/tabpanel";
 
+// Blocks
 @import "components/blocks/header";
 @import "components/blocks/appshell";
 @import "components/blocks/footer";
-//@import "layout/nprogress";
 
-@import "../node_modules/nprogress/nprogress.css";
+// NProgress styling
+@import "layout/nprogress";
 
-html {
-       font-size: $baseFontSize;
-}
-
-body {
-       background: $root-background;
-       font-size: 1.6rem;
-}
-
-:root {
-       --footer-min-height: #{$footer-min-height};
-}
+// Reset browser styling
+@import "reboot";

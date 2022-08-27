@@ -1,15 +1,9 @@
-import React, { Component, ReactNode } from "react";
+import { Component, ReactNode } from "react";
 import { createPortal } from 'react-dom';
-import { Bounds } from './types';
+import { OverlayProps } from './types';
 
 
-export default class Overlay extends Component<{
-       className?: string,
-       children: ReactNode,
-       isShowing: boolean,
-       overlayBounds?: Bounds,
-       onOverlayClick?: (evt: MouseEvent) => void
-}> {
+export default class Overlay extends Component<OverlayProps> {
 
        overlayRoot = document.getElementById('overlay-root');
        currentContainer: HTMLDivElement = null;
@@ -25,7 +19,7 @@ export default class Overlay extends Component<{
 
        }
 
-       constructor(props) {
+       constructor(props: OverlayProps) {
 
               super(props);
               if (!this.overlayRoot) {
@@ -66,7 +60,7 @@ export default class Overlay extends Component<{
        //        }
        // }
 
-       componentDidUpdate(prevProps: Readonly<{ children: ReactNode; isShowing: boolean; }>, prevState: Readonly<{}>, snapshot?: any): void {
+       componentDidUpdate(prevProps, prevState, snapshot?: any): void {              
               if (!this.props.isShowing) {
                      this.currentContainer.classList.add('close');
               }

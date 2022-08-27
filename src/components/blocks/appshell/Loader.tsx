@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import cx from "classnames";
 import NProgress from 'nprogress';
 import { LoaderProps } from "./types";
 
@@ -6,7 +7,7 @@ NProgress.configure({
        showSpinner: false
 });
 
-function Loader({loaderElement}: LoaderProps) {
+function Loader({children, className}: LoaderProps) {
 
        useEffect(() => {
               
@@ -15,16 +16,21 @@ function Loader({loaderElement}: LoaderProps) {
               return () => { NProgress.done(); }
        });
 
-       if(!loaderElement) {
+       if(!children) {
               <div className="spinner">
               </div>
        }
 
+       let cls = cx({
+              "module-loading-spinner": true,
+              [className]: className
+       })
+
        return (
-              <div className="module-loading-spinner">
+              <div className={cls}>
                      <div className="spinner-container">
                             <div className="spinner-content">
-                                   {loaderElement}
+                                   {children}
                             </div>
                      </div>
 

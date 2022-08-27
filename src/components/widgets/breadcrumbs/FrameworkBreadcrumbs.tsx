@@ -2,15 +2,12 @@ import cx from "classnames";
 import { Link } from "react-router-dom";
 import { FrameworkBreadcrumbsProps } from "./types";
 
-function FrameworkBreadcrumbs({ className, children, links, separator }: FrameworkBreadcrumbsProps) {
+function FrameworkBreadcrumbs({ className, children, links, separator, currentPageName }: FrameworkBreadcrumbsProps) {
 
        let cls = cx({
               'breadcrumbs-area': true,
               [className]: className
        });
-
-       let lastLink = links[links.length - 1];
-       links = (links.length > 1) ? links.slice(0, links.length - 1) : [];
 
        return (
               <div className={cls}>
@@ -35,7 +32,7 @@ function FrameworkBreadcrumbs({ className, children, links, separator }: Framewo
                                           {
                                                  <div className="breadcrumb">
                                                         <div className="breadcrumb-link current">
-                                                               {lastLink.name}
+                                                               {currentPageName}
                                                         </div>
                                                  </div>
 

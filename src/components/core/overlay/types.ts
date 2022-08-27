@@ -1,10 +1,19 @@
-import React, { ForwardRefExoticComponent } from "react";
-import { ReactChildren } from "../../../types";
+import { BaseProps } from "../../../types";
 
-export interface ModalProps {
-    children: ReactChildren;
+export interface OverlayProps extends BaseProps {
+    isShowing: boolean,
+    overlayBounds?: Bounds,
+    onOverlayClick?: (evt: MouseEvent) => void
+}
+
+export interface ModalBaseProps extends BaseProps {
     isShowing: boolean;
-    className: string;
+}
+
+export interface ModalProps extends ModalBaseProps {
+    title?: string,
+    showCloseBtn?: boolean,
+    onCloseBtnClick: (evt: MouseEvent) => void
 }
 
 export type Bounds = {
@@ -14,12 +23,10 @@ export type Bounds = {
     bottom: number
 };
 
-export interface PopoverProps {
-    className?: string,
+export interface PopoverProps extends BaseProps {
     isShowing: boolean,
     overlayBounds?: Bounds,
     showOverlay: boolean,
-    children: ReactChildren,
     onOverlayClick: (evt: MouseEvent) => void
 }
 
@@ -27,8 +34,6 @@ export interface PopoverWithRefProps extends PopoverProps {
     popoverRef: any
 }
 
-export interface ContextMenuProps {
-    children: ReactChildren,
-    target?: HTMLElement,
-    className?: string
+export interface ContextMenuProps extends BaseProps {
+    owner?: HTMLElement,
 }

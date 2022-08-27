@@ -1,4 +1,4 @@
-import Breadcrumbs from "./Breadcrumbs";
 import BasicBreadcrumbs from "./BasicBreadcrumbs";
+import { BreadcrumbLink } from './types';
 
-export { Breadcrumbs, BasicBreadcrumbs };
+export { BasicBreadcrumbs, BreadcrumbLink };

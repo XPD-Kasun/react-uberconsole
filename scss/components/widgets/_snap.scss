@@ -1,6 +1,6 @@
 .snap {
        width: 100%;
-       box-shadow: 0px 1px 2px 1px #8d8d8d;
+       box-shadow: $snap-boxshadow;
 
        .snap {
               box-shadow: none;
@@ -8,7 +8,7 @@
        }
 
        .header {
-              background: #fafafa;
+              background: $snap-headerBackground;
               border-bottom: 1px solid #ccc;
        }
 
@@ -16,7 +16,7 @@
               display: flex;
               flex: 1;
               flex-wrap: wrap;
-              padding: 16px 20px;
+              padding: $snap-headerPadding;
 
               .title-content {
                      display: flex;
@@ -42,11 +42,11 @@
 
        .header-title {
               margin: 3px 0;
-              font-weight: bold;
+              font-weight: $snap-headerFontweight;
               flex: 1;
-              font-size: 1.9rem;
-              color: #2f3137;
-              letter-spacing: 0.5px;
+              font-size: $snap-headerFontsize;
+              color: $snap-headerColor;
+              letter-spacing: $snap-headerLetterspacing;
 
        }
 
@@ -57,7 +57,7 @@
 
        .content {
               padding: 20px;
-              background-color: #fff;
+              background-color: $snap-contentBackground;
        }
 
 }

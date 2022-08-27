@@ -1,36 +1,27 @@
+// Color used alone is referred to the font color. For variable naming, color is used synonymously with css color property which 
+// is used to declare font color(foreground color).
+
+//Fonts
+
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
-//@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&family=Nunito&display=swap');
 
 * {
-       font-family:  'Source Sans Pro', sans-serif;
+       font-family: 'Source Sans Pro', sans-serif;
 }
 
 $baseFontSize: 62.5%; // 10px
-$primary-color: green;
 
+// Root
+
+$root-background: #f3f3f3; // Background of html (Specifically :root)
+
+// Grid and Layout
 
 $panel-margin: 20px;
 $container-margin: 8px;
 
 $pageContainer-margin: 0;
 $pageContainer-padding: 20px 30px;
-
-
-$root-background: #f3f3f3;
-
-$header-background:#0d465e;
-$header-menu-labelcolor: #d8d8d8;
-
-$footer-background:#0d465e;
-
-$shell-navigation-width: 240px;
-$shell-sidebar-background: white;
-$shell-sidebar-border: 1px solid #ccc;
-
-$popup-boxshadow: white 0px 0px 0px 0px, rgba(15, 23, 42, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
-
-$footer-min-height: 30px;
-
 
 $space-unit: 2rem;
 $space-map: (
@@ -42,3 +33,164 @@ $space-map: (
        5: $space-unit * 2.5,
        6: $space-unit * 3
 );
+
+$pageTitleColor: #000000;
+$headingColor: #000000;
+$headingMargin: (
+       0px,
+       0px
+); // This contains heading margin for top and bottom in format : (margin-top,margin-bottom).
+$anchorColor: #114ea2;
+$anchorHoverTextDecoration: underline;
+
+// App Shell
+
+$shell-navigation-width: 240px;
+$shell-sidebar-background: white;
+$shell-sidebar-border: 1px solid #ccc;
+
+// Sidebar
+
+$sidebar-fontsize: 1.45rem;
+$sidebar-anchorColor: #3b3b3b;
+$sidebar-anchorHoverColor: #03a9f4;
+$sidebar-anchorActiveColor: #ff5722;
+$sidebar-itemPaddingleft: 20px;
+$sidebar-itemMarginbottom: 10px;
+$sidebar-groupMarginbottom: 20px;
+
+// Core Controls
+
+$btn-padding: 7px 20px;
+$btn-fontsize: 1.4rem;
+/// btn-{type}: (background, color, borderColor);
+$btn-normal: (
+       #fafafa,
+       #393939,
+       #393939
+);
+
+$btn-primary: (
+       #ff7f00,
+       #fafafa,
+       darken(#ff7f00, 5%)
+);
+$btn-warning: (
+       #ede526,
+       #393939,
+       darken(#ede526, 5%)
+);
+$btn-danger: (
+       #f44848,
+       #ffffff,
+       darken(#f44848, 5%)
+);
+$btn-blue: (
+       #168cea,
+       #fff,
+       darken(#168cea, 5%)
+);
+
+// This map contains items in format : ('classname', $btnSCSSVariable). Variables are declared above.
+// If you need to add more btn types, create a variable above and add it to the following map.
+
+$btns: (
+       ('primary', $btn-primary),
+       ('warning', $btn-warning),
+       ('danger', $btn-danger),
+       ('blue', $btn-blue)
+);
+
+$chk-bordercolor: #1d7aad;
+$chk-background: white;
+$chk-checkedBackground: #1d7aad;
+$chk-labelLeftPadding: 12px;
+$chk-labelColor: gray;
+$chk-size: (
+       12px,
+       12px
+);
+
+$switch-background: #666;
+$switch-checkedBackground: #168cea;
+$switch-knobBackground: white;
+$switch-border: none;
+$switch-knowBoxShadowColor: #599cab9c;
+$switch-knobRadius: 15px;
+$switch-size: (
+       30px,
+       21px
+);
+
+$dropdown-border: 1px solid #aab7b8;
+$dropdown-background: #ffffff;
+
+$option-dotColor: #ff5722;
+
+$overlay-glassBackground: rgba(0, 0, 0, 0.2);
+$overlay-glassBackdropFilter: blur(2px);
+
+$modal-maxwidth: 600px;
+$modal-boxshadow: white 0px 0px 0px 0px, rgba(15, 23, 42, 0.05) 0px 0px 0px 1px, rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.1) 0px 8px 10px -6px;
+$modal-borderradius: 7px;
+$modal-border: 0px solid #c1c8d5;
+$modal-background: #fff;
+$modal-headerPadding: 10px 15px;
+$modal-headerColor: #343434;
+$modal-headerBackground: #fff;
+$modal-headerFontsize: 1.7rem;
+$modal-headerBorderbottom: 1px solid #c1c8d5;
+
+$popover-borderradius: 10px;
+$popover-border: 1px solid #d9d9d9;
+$popover-background: white; // Header and Footer
+
+$text-border: 1px solid #aab7b8;
+$text-background: white;
+$text-color: #000;
+$text-fontsize: 1.6rem;
+
+$header-background: #0d465e;
+$header-menu-labelcolor: #d8d8d8;
+$header-mobileMenuBtnActiveBackground: #03202b;
+$header-mobileMenuBtnColor: #d8d8d8;
+
+$footer-min-height: 30px;
+$footer-background: #0d465e;
+$footer-anchorColor: white;
+$footer-anchorHoverColor: #ec8f71;
+$footer-color: white;
+
+// Widgets
+
+$datatable-border: 1px solid #ccc;
+$datatable-background: white;
+$datatable-rowHoverBackground: #f0fafa;
+$datatable-rowBackground: white;
+$datatable-rowStripeBackground: white;
+
+$infopanel-defaultBackground: #f0fafa;
+$infopanel-defaultBorder: 1px solid #666;
+$infopanel-infoBackground: rgba(169, 217, 255, 0.3);
+$infopanel-infoBorder: 1px solid #3d51b5;
+$infopanel-warnBackground: rgba(244, 207, 152, 0.3);
+$infopanel-warnBorder: 1px solid #ff9800;
+$infopanel-errorBackground: rgba(255, 190, 186, 0.3);
+$infopanel-errorBorder: 1px solid #e91e63;
+
+$snap-boxshadow: 0px 1px 2px 1px #8d8d8d;
+$snap-headerBackground: #fafafa;
+$snap-headerPadding: 16px 20px;
+$snap-headerFontsize: 1.9rem;
+$snap-headerColor: #2f3137;
+$snap-headerLetterspacing: 0.5px;
+$snap-headerFontweight: bold;
+$snap-contentBackground: #fff;
+
+$tabpanel-tabMarkerColor: #0d465e;
+
+// NProgress - Top loader strip
+
+$nprogress-background: #29d;
+$nprogress-barHeight: 2px;
+$nprogress-boxshadow: 0 0 10px #29d, 0 0 5px #29d;

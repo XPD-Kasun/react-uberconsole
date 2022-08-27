@@ -1,13 +1,12 @@
-import { ReactChildren } from "../../../types";
+import { BaseProps, ReactChildren } from "../../../types";
 
 export interface BreadcrumbLink {
        path: string,
        name: string
 }
 
-export interface FrameworkBreadcrumbsProps {
-       className?: string,
-       children?: ReactChildren,
+export interface FrameworkBreadcrumbsProps extends BaseProps {
        separator: ReactChildren,
-       links: BreadcrumbLink[]
+       links: BreadcrumbLink[],
+       currentPageName: string
 }

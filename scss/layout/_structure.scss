@@ -40,7 +40,7 @@
        flex-direction: column;
 }
 
-@for $i from 0 through length($space-map) {
+@for $i from 0 through length($space-map)-1 {
        .mb-#{$i} {
               margin-bottom: (map-get($space-map, $i)) !important;
        }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import FrameworkSnap from "../snap/FrameworkSnap";
+import cx from "classnames";
 import { TabPanelProps } from "./types";
 import TabPage from "./TabPage";
 import { ReactChildren } from "../../../types";
@@ -41,7 +42,7 @@ function getHeaderTabs(componentMap: TabComponentMap, onTabSelect, currentlySele
 
 }
 
-function TabPanel({ children }: TabPanelProps) {
+function TabPanel({ className, children }: TabPanelProps) {
 
        let childrenAr = React.Children.toArray(children);
        let componentMap: TabComponentMap = {};
@@ -63,7 +64,7 @@ function TabPanel({ children }: TabPanelProps) {
        });
 
        useEffect(() => {
-              console.log('rr')
+              
               setSelectedTab({
                      content: componentMap[selectedTab.id].content,
                      id: selectedTab.id
@@ -79,9 +80,14 @@ function TabPanel({ children }: TabPanelProps) {
               });
        };
 
+       let cls = cx({
+              "tabpanel": true,
+              [className]: className
+       })
+
 
        return (
-              <FrameworkSnap header={getHeaderTabs(componentMap, onTabSelect, selectedTab.id)} className="tabpanel">
+              <FrameworkSnap header={getHeaderTabs(componentMap, onTabSelect, selectedTab.id)} className={cls}>
                      {
                             selectedTab.content
                      }

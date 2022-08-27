@@ -19,9 +19,9 @@
 
        .dropdown-display-label {
               padding: 7px 7px 7px 12px;
-              border: 1px solid #aab7b8;
+              border: $dropdown-border;
               box-sizing: border-box;
-              background: #ffffff;
+              background: $dropdown-background;
               display: flex;
 
               .label-text {

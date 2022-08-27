@@ -36,6 +36,7 @@ function isMobile() {
 
 function HeaderDropdown({
        id,
+       className,
        showOverlay = true,
        hideOnOverlayClick = true,
        dropdownClass,
@@ -75,7 +76,8 @@ function HeaderDropdown({
        let cls = cx({
               "header-menu": true,
               "is-open": isVisible,
-              "fixed": showOnMobile
+              "fixed": showOnMobile,
+              [className]: className
        });
 
        let dropdownCls = cx({

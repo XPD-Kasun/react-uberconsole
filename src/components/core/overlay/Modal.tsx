@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { IoCloseOutline } from "react-icons/io5";
 import ModalBase from "./ModalBase";
+import { ModalProps } from "./types";
 
 
-function Modal({className, children, isShowing, title, showCloseBtn=true, onCloseBtnClick}) {
+function Modal({className, children, isShowing, title, showCloseBtn=true, onCloseBtnClick}: ModalProps) {
        
        const onCloseClick = (evt) => {
               onCloseBtnClick && onCloseBtnClick(evt);

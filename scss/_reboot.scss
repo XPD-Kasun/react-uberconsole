@@ -1,0 +1,15 @@
+:root {
+       --background: #{$root-background};
+       --footer-min-height: #{$footer-min-height};
+}
+
+html {
+       font-size: $baseFontSize;
+}
+
+body {
+       margin: 0;
+       padding: 0;
+       background: $root-background;
+       font-size: 1.6rem;
+}

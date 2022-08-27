@@ -26,7 +26,7 @@ export const UberConsoleContext = React.createContext(contextValue);
 
 export default class UberConsoleProvider extends React.Component<UberConsoleProps, UberConsoleState> {
 
-       constructor(props) {
+       constructor(props: UberConsoleProps) {
               super(props);
               this.state = {
                      screenSize: { width: window.innerWidth, height: window.innerHeight }
@@ -46,7 +46,16 @@ export default class UberConsoleProvider extends React.Component<UberConsoleProp
        }
 
        cleanConfig() {
+
+              if(!this.props.uberConfig) {
+                     throw new Error("No uberConfig prop was passed. uberConfig is required for UberConsoleProvider.")
+              }              
+
               let moduleConfig = this.props.uberConfig.moduleConfig;
+
+              if(!moduleConfig) {
+                     throw new Error("No moduleConfig was preset in uberConfig. Please include a valid moduleConfig for uberConfig prop.");
+              }
 
               if (!moduleConfig.modules || moduleConfig.modules.length === 0) {
                      throw new Error('At least one module should exist in module configuration.');

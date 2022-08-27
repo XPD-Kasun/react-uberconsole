@@ -1,9 +1,9 @@
 import cx from 'classnames';
 import { useEffect, useState } from 'react';
 import Overlay from './Overlay';
-import { ModalProps } from "./types";
+import { ModalBaseProps } from "./types";
 
-function ModalBase({ className, children, isShowing }: ModalProps) {
+function ModalBase({ className, children, isShowing }: ModalBaseProps) {
 
        let [retainContent, setRetainCont] = useState(isShowing);
 

@@ -7,20 +7,22 @@ function AppShellUI({ sidebar, height, children, onMobileSidebarBtn, onClick, is
        let path = useLocation().pathname;
        let moduleInfo = getModuleInfoFromPath(moduleConfig, path);
 
-       let hideSidebar = true;
+       let hideSidebar = false;
 
        if (moduleInfo) {
 
-              if(moduleInfo.module.sidebar !== undefined) {
+              if (moduleInfo.module && moduleInfo.module.sidebar !== undefined) {
                      sidebar = moduleInfo.module.sidebar;
               }
               if (moduleInfo.subModule) {
                      hideSidebar = moduleInfo.subModule.hideSidebar;
-                     
+
               }
               if (moduleInfo.module && !moduleInfo.subModule) {
                      let homeSubModule = moduleInfo.module.subModules.find(x => x.path === '/');
-                     hideSidebar = homeSubModule.hideSidebar;
+                     if (homeSubModule) {
+                            hideSidebar = homeSubModule.hideSidebar;
+                     }
 
               }
        }

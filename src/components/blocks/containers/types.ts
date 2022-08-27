@@ -1,4 +1,4 @@
-import { ReactChildren } from "../../../types";
+import { BaseProps } from "../../../types";
 
 export enum Align {
        Left = 'start',
@@ -14,10 +14,8 @@ export enum Direction {
 };
 
 
-export interface FlexProps {
-       children: ReactChildren,
+export interface FlexProps extends BaseProps {
        align: Align,
        xalign: Align,
-       direction: Direction,
-       className: string
+       direction: Direction
 }

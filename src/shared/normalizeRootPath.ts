@@ -1,6 +1,6 @@
 
 
-export default function normalizeRootPath(rootPath) {
+export default function normalizeRootPath(rootPath: string) {
 
        if(!rootPath) {
               rootPath = "/";

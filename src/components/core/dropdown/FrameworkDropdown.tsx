@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import cx from "classnames";
-import { DropdownProps } from './types';
+import { FrameworkDropdownProps } from './types';
 import { TextBox } from '../textbox';
 import getItem from '../../../shared/getSelectedItem';
 import { IoSearch, IoChevronDownOutline, IoTvOutline } from 'react-icons/io5';
@@ -13,8 +13,10 @@ function FrameworkDropdown({
        onSearchChange,
        isEnabled = true,
        selectedId,
+       htmlID,
+       name,
        labelComponent,
-       listItemComponent }: DropdownProps) {
+       listItemComponent }: FrameworkDropdownProps) {
 
        let [selectedItem, setSelectedItem] = useState(getItem(dataSource, selectedId));
        let [isOpen, setIsOpen] = useState(false);
@@ -64,7 +66,7 @@ function FrameworkDropdown({
                      <div className="dropdown-wrapper">
                             <div className="dropdown-container">
                                    <div className="dropdown-hidden-select">
-                                          <select value={dataSource.idSelector(selectedItem)} disabled>
+                                          <select id={htmlID} name={name} value={dataSource.idSelector(selectedItem)}>
                                                  {
                                                         selectedItem && (
                                                                <option value={dataSource.idSelector(selectedItem)}></option>

@@ -1,10 +1,4 @@
-import { ModuleConfig, SidebarItem, SidebarItemType, SubModule } from "../types";
-
-export interface SidebarItemWithModules extends SidebarItem {
-       subModule?: SubModule
-}
-
-
+import { SidebarItemType, SidebarItemWithModules } from "../types";
 
 function mapSubModuleRecursive(item, submoduleMap, module): SidebarItemWithModules {
 

@@ -141,36 +141,36 @@
               .sidebar-item {
 
                      .sidebar-label{
-                            font-size: 1.45rem;
+                            font-size: $sidebar-fontsize;
                             text-decoration: none;
-                            padding-left: 20px;
+                            padding-left: $sidebar-itemPaddingleft;
                             user-select: none;
-                            margin-bottom: 10px;
+                            margin-bottom: $sidebar-itemMarginbottom;
 
                             a {
-                                   color: #3b3b3b;
+                                   color: $sidebar-anchorColor;
                                    text-decoration: none;
 
                                    &:hover {
-                                          color: #03a9f4;
+                                          color: $sidebar-anchorHoverColor;
                                    }
 
                                    &.active {
-                                          color: #ff5722;
+                                          color: $sidebar-anchorActiveColor;
                                           font-weight: bold;
                                    }
                             }
                      }
 
                      &.group {
-                            margin-bottom: 20px;
+                            margin-bottom: $sidebar-groupMarginbottom;
 
                             .sidebar-group-label {
                                    display: flex;
                                    margin: 10px 0px;
                                    cursor: pointer;
                                    user-select: none;
-                                   margin-top: 20px;
+                                   margin-top: $sidebar-groupMarginbottom;
                             }
                      }
               }

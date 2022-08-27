@@ -6,11 +6,11 @@
     left: 0;
 
     &.glass {
-        background: rgba(0, 0, 0, 0.2);
+        background: $overlay-glassBackground;
         z-index: 10000;
         will-change: backdrop-filter, background;
         transition: backdrop-filter, background 0.5s;
-        backdrop-filter: blur(2px);
+        backdrop-filter: $overlay-glassBackdropFilter;
     }
 
     &.close {
@@ -33,20 +33,22 @@
 
 .modal {
     width: 100%;
-    max-width: 600px;
+    max-width: $modal-maxwidth;
 
     .modal-box {
-        box-shadow: $popup-boxshadow;
-        border-radius: 7px;
-        background: #ffffff;
+        box-shadow: $modal-boxshadow;
+        border-radius: $modal-borderradius;
+        background: $modal-background;
         margin: 0 20px;
-        border: 0px solid #c1c8d5;
+        border: $modal-border;
+        overflow: hidden;
         animation: modalOpen 0.2s ease forwards;
 
         .close-btn {
             display: flex;
             align-items: center;
             cursor: pointer;
+            color: #343434;
         }
 
     }
@@ -61,21 +63,22 @@
 
 .popover {
     position: fixed;
-    border: 1px solid #d9d9d9;
-    border-radius: 10px;
+    border: $popover-border;
+    border-radius: $popover-borderradius;
     padding: 10px;
-    box-shadow: $popup-boxshadow;
-    background: white;
+    box-shadow: $modal-boxshadow;
+    background: $popover-background;
 }
 
 
 
 .modal-header {
-    padding: 10px 15px;
-    border-bottom: 1px solid #c1c8d5;
-    font-size: 1.7rem;
+    padding: $modal-headerPadding;
+    border-bottom: $modal-headerBorderbottom;
+    font-size: $modal-headerFontsize;
     text-shadow: 1px 0px grey;
-    color: #343434;
+    background: $modal-headerBackground;
+    color: $modal-headerColor;
     display: flex;
     flex-direction: row;
     justify-content: space-between;

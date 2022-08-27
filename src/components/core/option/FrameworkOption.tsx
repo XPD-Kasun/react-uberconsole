@@ -1,7 +1,8 @@
 import cx from 'classnames';
 import { useState } from 'react';
+import { OptionProps } from './types';
 
-function FrameworkOption({ isEnabled, isChecked, className = "option", id, name, children, onChange }) {
+function FrameworkOption({ isEnabled, isChecked, className = "option", htmlID, name, value, children, onChange }: OptionProps) {
 
        let cls = cx({
               [className]: true,
@@ -21,12 +22,12 @@ function FrameworkOption({ isEnabled, isChecked, className = "option", id, name,
                             <div className="button-container">
                                    <div className="option-button">
                                           <svg version="1.1" width="16" height="16">
-                                                 <circle cx="8" cy="8" r="7" stroke="#6d6d6d" fill="#fff"/>
+                                                 <circle cx="8" cy="8" r="7" stroke="#6d6d6d" fill="#fff" />
                                                  <circle className="option-dot" cx="8" cy="8" r="5" fill="#ff5722" />
                                           </svg>
                                    </div>
-                                   <div style={{display: "none"}}>
-                                          <input type="radio" value={id} name={name} checked={isChecked} readOnly />
+                                   <div style={{ display: "none" }}>
+                                          <input type="radio" id={htmlID} value={value} name={name} checked={isChecked} readOnly />
                                    </div>
                             </div>
                             <div className="option-label">

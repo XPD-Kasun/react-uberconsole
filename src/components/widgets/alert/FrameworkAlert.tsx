@@ -1,7 +1,8 @@
-import { infoPanelType } from './types';
+import { AlertProps, AlertType } from './types';
+import cx from "classnames";
 import { IoInformationCircleOutline, IoCloseCircleOutline, IoWarningOutline, IoClose } from 'react-icons/io5';
 
-function FrameworkInfoPanel({ className = "info-panel", icon, onClose, type = infoPanelType.default, children, canClose = false }) {
+function FrameworkAlert({ className, icon, onClose, type = AlertType.default, children, canClose = false }: AlertProps) {
 
        let Icon = icon;
        let iconColor = '';
@@ -13,31 +14,36 @@ function FrameworkInfoPanel({ className = "info-panel", icon, onClose, type = in
        if (!Icon) {
 
               switch (type) {
-                     case infoPanelType.default:
+                     case AlertType.default:
                             Icon = IoInformationCircleOutline;
                             iconColor = "#555";
                             break;
 
-                     case infoPanelType.info:
+                     case AlertType.info:
                             Icon = IoInformationCircleOutline;
                             iconColor = '#3d51b5';
                             break;
 
-                     case infoPanelType.warn:
+                     case AlertType.warn:
                             Icon = IoWarningOutline;
                             iconColor = '#7f5b0d';
                             break;
 
-                     case infoPanelType.error:
+                     case AlertType.error:
                             Icon = IoCloseCircleOutline;
                             iconColor = '#e91e63';
                             break;
               }
        }
 
+       let cls = cx({
+              "info-panel": true,
+              [type]: type,
+              [className]: className
+       });
 
        return (
-              <div className={className + ' ' + type}>
+              <div className={cls}>
                      <div className="panel-container">
                             <div className="panel-layer">
                                    <div className="icon">
@@ -55,4 +61,4 @@ function FrameworkInfoPanel({ className = "info-panel", icon, onClose, type = in
        )
 }
 
-export default FrameworkInfoPanel;
+export default FrameworkAlert;

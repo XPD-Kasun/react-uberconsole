@@ -17,23 +17,23 @@
        }
 
        &.default .panel-container {
-              background: white;
-              border: 1px solid #666;
+              background: $infopanel-defaultBackground;
+              border: $infopanel-defaultBorder;
        }
 
        &.info .panel-container {
-              background: rgba(169, 217, 255, 0.3);
-              border: 1px solid #3d51b5;
+              background: $infopanel-infoBackground;
+              border: $infopanel-infoBorder;
        }
 
        &.warn .panel-container {
-              background: rgba(244, 207, 152, 0.3);
-              border: 1px solid #ff9800;
+              background: $infopanel-warnBackground;
+              border: $infopanel-warnBorder;
        }
 
        &.error .panel-container {
-              background: rgba(255, 190, 186, 0.3);
-              border: 1px solid #e91e63;
+              background: $infopanel-errorBackground;
+              border: $infopanel-errorBorder;
        }
 
 

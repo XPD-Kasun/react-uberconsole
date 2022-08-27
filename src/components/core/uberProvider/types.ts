@@ -17,7 +17,7 @@ export type UberConfigType = {
 export interface UberConsoleProps {
 
        uberConfig: UberConfigType,
-       children: ReactChildren
+       children?: ReactChildren
 
 }
 

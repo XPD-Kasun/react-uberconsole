@@ -8,20 +8,23 @@ export default function getModuleInfoFromPath(moduleConfig: ModuleConfig, path: 
        basePath: string
 } {
 
+       let qsIndex = path.indexOf('?');
+       if(qsIndex > -1) {
+              path = path.substring(0, qsIndex);
+       }
+       
        let cachedItem = cache[path];
 
        if (cachedItem) {
-              console.log('module info from cache, ', cache);
               return cachedItem;
        }
 
-       let segments = path.split('/');
+       let segments = path.toLowerCase().split('/');
        let module = null, subModule = null;
 
        if (segments.length > 2) {
               cachedItem = cache['/' + segments[1] + '/' + segments[2]];
               if (cachedItem) {
-                     console.log('module info from cache, ', cache);
                      return cachedItem;
               }
 

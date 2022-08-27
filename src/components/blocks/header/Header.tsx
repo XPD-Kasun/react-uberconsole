@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import cx from "classnames";
 import { IoAppsSharp } from "react-icons/io5";
 import { useUberConfig } from "../../core/uberProvider";
+import { HeaderProps } from "./types";
 
-function Header({ children, showMenu, mobileMenu }) {
+function Header({ className, children, mobileMenuToggle, mobileMenu }: HeaderProps) {
 
        let [headerHeight, setHeaderHeight] = useState(0);
        let [isMobileMenuVisible, setIsMobileMenuVisible] = useState(false);
@@ -19,8 +20,8 @@ function Header({ children, showMenu, mobileMenu }) {
               setIsMobileMenuVisible(isVisible => !isVisible);
        };
 
-       if (!showMenu) {
-              showMenu = (
+       if (!mobileMenuToggle) {
+              mobileMenuToggle = (
                      <div className="show-menu-container">
                             <div className="menu-icon">
                                    <IoAppsSharp color="#c5c5c5" size="20px" />
@@ -30,6 +31,11 @@ function Header({ children, showMenu, mobileMenu }) {
               )
        }
 
+       let cls = cx({
+              "header-main": true,
+              [className]: className
+       });
+
        let showMenuCls = cx({
               'show-menu': true,
               'is-active': isMobileMenuVisible
@@ -37,14 +43,14 @@ function Header({ children, showMenu, mobileMenu }) {
 
 
        return (
-              <header className="header-main">
+              <header className={cls}>
                      <div className="header-container" ref={headerMainRef}>
                             <div className="header-wrapper">
                                    {
                                           children
                                    }
                                    <div className={showMenuCls} onClick={onShowMenuClick}>
-                                          {showMenu}
+                                          {mobileMenuToggle}
                                    </div>
                             </div>
                      </div>

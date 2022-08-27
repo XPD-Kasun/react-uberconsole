@@ -1,7 +1,6 @@
-import { ReactChildren } from "../../../types";
+import { BaseProps, ReactChildren } from "../../../types";
 
-export interface TabPanelProps {
-       children: ReactChildren
+export interface TabPanelProps extends BaseProps {
 }
 
 export interface TabPageProps {

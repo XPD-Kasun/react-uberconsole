@@ -1,7 +1,17 @@
 import { useState } from "react";
 import cx from 'classnames';
+import { CheckboxProps } from "./types";
 
-export default function FrameworkCheckBox({ className, isChecked, isEnabled = true, value, onChange, toggleComponent, children }) {
+export default function FrameworkCheckBox({
+       className,
+       htmlID,
+       name,
+       isChecked = false,
+       isEnabled = true,
+       value,
+       onChange,
+       toggleComponent,
+       children }: CheckboxProps) {
 
        let cls = cx({
               "checkbox": true,
@@ -25,7 +35,7 @@ export default function FrameworkCheckBox({ className, isChecked, isEnabled = tr
                                    {toggleComponent}
                             </div>
                             <div className="label">{children}</div>
-                            <input type="checkbox" value={value} checked={isChecked} readOnly/>
+                            <input id={htmlID} name={name} type="checkbox" value={value} checked={isChecked} readOnly />
                      </div>
               </div>
 

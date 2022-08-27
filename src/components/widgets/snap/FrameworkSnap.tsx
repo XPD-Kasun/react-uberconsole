@@ -1,6 +1,7 @@
 import cx from "classnames";
+import { FrameworkSnapProps } from "./types";
 
-function FrameworkSnap({ className, header, children }) {
+function FrameworkSnap({ className, header, children }: FrameworkSnapProps) {
 
        let cls = cx({
               "snap": true,

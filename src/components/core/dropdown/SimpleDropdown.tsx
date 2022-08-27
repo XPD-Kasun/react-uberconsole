@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { ControlDataSource } from '../../../types';
 import FrameworkDropdown from './FrameworkDropdown';
-import { SimpleDropdownProps } from './types';
+import { DropdownProps } from './types';
 
 function DefaultLabal({ item }) {
        return (
@@ -20,7 +20,7 @@ function ListItem({ item, onSelect }) {
        )
 }
 
-function SimpleDropdown({ className = "dropdown", dataSource, selectedId, textSelector, isEnabled }: SimpleDropdownProps) {
+function SimpleDropdown({ className = "dropdown", dataSource, selectedId, htmlID, name, textSelector, isEnabled }: DropdownProps) {
 
        let [searchTerm, setSearchTerm] = useState('');
 
@@ -67,6 +67,8 @@ function SimpleDropdown({ className = "dropdown", dataSource, selectedId, textSe
                      className={className}
                      dataSource={memoizedDataSource}
                      selectedId={selectedId}
+                     htmlID={htmlID}
+                     name={name}
                      isEnabled={isEnabled}
                      labelComponent={DefaultLabal}
                      listItemComponent={ListItem}

@@ -1,10 +1,8 @@
 import cx from 'classnames';
-import { useState } from "react";
+import { TextboxProps } from './types';
 
+function FrameworkTextBox({className, isEnabled, name, value, htmlID, hasBorder=true, onChange, placeholder}: TextboxProps) {
 
-function FrameworkTextBox({className = '', hasBorder=true, placeholder, onChange, isEnabled = true}) {
-
-       let [text, setText] = useState('');
        let cls = cx({
               [className]: className,
               "textbox": true,
@@ -16,7 +14,6 @@ function FrameworkTextBox({className = '', hasBorder=true, placeholder, onChange
 
               if(isEnabled) {
 
-                     setText(evt.target.value);
                      onChange && onChange(evt.target.value);
 
               }
@@ -24,7 +21,7 @@ function FrameworkTextBox({className = '', hasBorder=true, placeholder, onChange
 
        return(
               <div className={cls}>
-                     <input disabled={!isEnabled} type="text" placeholder={placeholder} className="text" onChange={_onChange} value={text} />
+                     <input id={htmlID} name={name} disabled={!isEnabled} type="text" placeholder={placeholder} className="text" onChange={_onChange} value={value} />
               </div>
        )
 

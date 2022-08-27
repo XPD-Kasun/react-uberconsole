@@ -1,7 +1,8 @@
 import { IoCheckmarkSharp } from "react-icons/io5";
 import FrameworkCheckBox from "./FrameworkCheckBox";
+import { CheckboxProps } from "./types";
 
-function CheckBox({ className, isChecked, isEnabled, value, onChange, children }) {
+function CheckBox({ className, isChecked, htmlID, name, isEnabled, value, onChange, children }: CheckboxProps) {
 
        let toggle = (
               <div className="chk">
@@ -19,6 +20,8 @@ function CheckBox({ className, isChecked, isEnabled, value, onChange, children }
                      isChecked={isChecked}
                      onChange={onChange}
                      isEnabled={isEnabled}
+                     htmlID={htmlID}
+                     name={name}
               >
                      {children}
               </FrameworkCheckBox>

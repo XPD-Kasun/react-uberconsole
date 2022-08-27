@@ -1,5 +1,4 @@
-import { SidebarItemWithModules } from "../../../shared/getSidebarItems"
-import { Module, ModuleConfig, ReactChildren } from "../../../types"
+import { BaseProps, ReactChildren, SidebarItemWithModules } from "../../../types"
 
 export interface SidebarItem {
        name: string,
@@ -17,23 +16,17 @@ export interface SidebarNavigationSectionProps {
        className?: string
 }
 
-export interface AppShellProps {
-       children?: ReactChildren,
-       modulePath: string,
+export interface AppShellProps extends BaseProps {
        sidebar?: ReactChildren,
-       height: number|string,
-       mobileMenu: ReactChildren
+       height: number|string
 }
 
-export interface ModuleLinkProps {
+export interface ModuleLinkProps extends BaseProps{
        module?: string,
-       className?: string,
-       subModule: string,
-       children: ReactChildren,
+       subModule: string
        queryString?: URLSearchParams | string,
        hash?: string
 }
 
-export interface LoaderProps {
-       loaderElement?: ReactChildren
+export interface LoaderProps extends BaseProps {
 }

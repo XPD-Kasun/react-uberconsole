@@ -38,7 +38,7 @@
        &.checked {
 
               .option-dot {
-                     fill: #ff5722;
+                     fill: $option-dotColor;
               }
 
               &.disabled {

@@ -1,5 +1,7 @@
 .checkbox {
 
+       $switchRadius:nth($switch-size, 2) - 6px;
+
        user-select: none;
        cursor: pointer;
 
@@ -10,11 +12,11 @@
               .chk {
                      background: white;
                      cursor: default;
-                     border: 1px solid gray;
+                     border: 1px solid $chk-bordercolor;
               }
 
               .label {
-                     color: gray;
+                     color: $chk-labelColor;
               }
        }
 
@@ -34,11 +36,11 @@
        }
 
        .chk {
-              height: 12px;
-              width: 12px;
+              height: nth($chk-size,2);
+              width: nth($chk-size, 1);
               border-radius: 3px;
-              border: 1px solid #1d7aad;
-              background: white;
+              border: 1px solid $chk-bordercolor;
+              background: $chk-background;
               position: relative;
               flex-shrink: 0;
 
@@ -46,29 +48,29 @@
        }
 
        .switch {
-
-              height: 21px;
-              background: #36463c;
-              width: 30px;
+              height: nth($switch-size, 2);
+              background: $switch-background;
+              width: nth($switch-size, 1);
+              border: $switch-border;
               border-radius: 12px;
               position: relative;
               flex-shrink: 0;
 
               .knob {
-                     height: 15px;
-                     width: 15px;
-                     background: white;
-                     border-radius: 7px;
+                     height: $switchRadius;
+                     width: $switchRadius;
+                     background: $switch-knobBackground;
+                     border-radius: (nth($switch-size, 2) - 6)/2;
                      position: absolute;
                      top: 3px;
                      left: 3px;
-                     box-shadow: 0 0 3px 1px #599cab9c;
+                     box-shadow: 0 0 3px 1px $switch-knowBoxShadowColor;
                      transition: left 0.1s ease-in;
               }
        }
 
        .label {
-              padding-left: 12px;
+              padding-left: $chk-labelLeftPadding;
        }
 
        &.checked {
@@ -81,14 +83,14 @@
               }
 
               .chk {
-                     background: #1d7aad;
+                     background: $chk-checkedBackground;
               }
 
               .switch {
-                     background: #168cea;
+                     background: $switch-checkedBackground;
 
                      .knob {
-                            left: 12px;
+                            left: nth($switch-size, 1) - 3 - $switchRadius;
                      }
               }
 

@@ -3,11 +3,11 @@ footer.footer-fs {
        min-height: var(--footer-min-height);
 
        a {
-              color: white;
+              color: $footer-anchorColor;
               text-decoration: none;
 
               &:hover {
-                     color: #ec8f71;
+                     color: $footer-anchorHoverColor;
               }
        }
 
@@ -20,7 +20,7 @@ footer.footer-fs {
        }
 
        .footer-wrap {
-              color: white;
+              color: $footer-color;
               text-align: center;
               font-size: 1.2rem;
               display: flex;

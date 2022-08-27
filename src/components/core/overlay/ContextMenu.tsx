@@ -3,14 +3,15 @@ import cx from "classnames";
 import Popover from "./Popover";
 import { ContextMenuProps } from "./types";
 
-function ContextMenu({ children, className, target }: ContextMenuProps) {
+function setPosition(ref, x, y) {
+       ref.style.top = y;
+       ref.style.left = x;
+}
+
+function ContextMenu({ children, className, owner }: ContextMenuProps) {
 
        let [isShowing, setIsShowing] = useState(false);
-       let [position, setPosition] = useState({
-              x: 0,
-              y: 0
-       });
-       let onContextMenuRef = useRef(null);
+       let contextMenuRef = useRef();
 
        const onOverlayClick = () => {
               setIsShowing(false);
@@ -22,50 +23,44 @@ function ContextMenu({ children, className, target }: ContextMenuProps) {
        });
 
        useEffect(() => {
-              
-              window.document.removeEventListener('contextmenu', onContextMenuRef.current);
-              onContextMenuRef.current = (evt) => {
 
-                     if (target) {
+              function onContextMenu(evt) {
+
+                     if (owner) {
 
                             let overlayPass = true;
                             let overlayRoot = document.getElementById('overlay-root');
-                            if(overlayRoot) {
-                                   if(overlayRoot.contains(evt.target)) {
+                            if (overlayRoot) {
+                                   if (overlayRoot.contains(evt.target)) {
                                           overlayPass = true;
                                    }
-                                   else{
+                                   else {
                                           overlayPass = false;
                                    }
                             }
 
-                            if (target.contains(evt.target) || overlayPass) {
-                                   
-                                   setPosition({
-                                          x: evt.clientX,
-                                          y: evt.clientY
-                                   });
+                            if (owner.contains(evt.target) || overlayPass) {
+
+                                   setPosition(contextMenuRef, evt.clientX, evt.clientY);
                                    setIsShowing(true);
                             }
                      }
                      else {
-                            setPosition({
-                                   x: evt.clientX,
-                                   y: evt.clientY
-                            });
+                            setPosition(contextMenuRef, evt.clientX, evt.clientY);
                             setIsShowing(true);
                      }
 
                      evt.preventDefault();
 
-              };
-              window.document.addEventListener('contextmenu', onContextMenuRef.current);
-
-              return () => {
-                     window.document.removeEventListener('contextmenu', onContextMenuRef.current);
               }
 
-       }, [target, setIsShowing]);
+              window.document.addEventListener('contextmenu', onContextMenu);
+
+              return () => {
+                     window.document.removeEventListener('contextmenu', onContextMenu);
+              }
+
+       }, []);
 
 
        return (
@@ -73,9 +68,8 @@ function ContextMenu({ children, className, target }: ContextMenuProps) {
                      className={cls}
                      isShowing={isShowing}
                      showOverlay={true}
-                     onOverlayClick={onOverlayClick}
-                     x={position.x}
-                     y={position.y}>
+                     ref={contextMenuRef}
+                     onOverlayClick={onOverlayClick}>
                      {children}
               </Popover>
        )

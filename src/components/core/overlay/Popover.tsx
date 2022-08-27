@@ -26,7 +26,7 @@ function Popover({ className, popoverRef, children, isShowing, overlayBounds, on
                             className="popover-overlay"
                             isShowing={isShowing}
                             overlayBounds={overlayBounds}>
-
+                                                                      
                             <div className={cls} ref={popoverRef}>
                                    <div className="popover-menu" onClick={e => onOverlayClick(null)}>
                                           {

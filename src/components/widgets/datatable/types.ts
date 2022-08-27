@@ -1,4 +1,4 @@
-import { ControlDataSource } from "../../../types";
+import { BaseProps, ControlDataSource } from "../../../types";
 
 export interface Action {
        id: any,
@@ -18,10 +18,8 @@ export interface ColumnConfig {
        [colName: string]: ColumnMeta
 }
 
-export interface DataTableProps {
-       className: string,
+export interface DataTableProps extends BaseProps {
        onAction?: (command: string, item: any) => void,
        dataSource: ControlDataSource,
        columnConfig?: ColumnConfig
-
 }

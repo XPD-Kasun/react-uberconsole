@@ -35,7 +35,7 @@
               }
               
               &:active, &.is-active {
-                     background-color: #03202b;
+                     background-color: $header-mobileMenuBtnActiveBackground;
               }
 
               .show-menu-container {
@@ -51,7 +51,7 @@
               }
 
               .text {
-                     color: #d8d8d8;
+                     color: $header-mobileMenuBtnColor;
               }
        }
        

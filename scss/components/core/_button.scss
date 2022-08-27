@@ -1,52 +1,38 @@
 $btnFontSize: 14px;
 
+@mixin btn($colorList) {
+
+       background: nth($colorList, 1);
+       color: nth($colorList, 2);
+       border: 1px solid nth($colorList, 3);
+
+       &:active {
+              background: darken(nth($colorList, 1), 10%);
+       }
+}
+
+@mixin create-btn($btnClass, $colorList) {
+
+       &.#{$btnClass} {
+              @include btn($colorList);
+       }
+}
+
 .btn {
-       padding: 7px 20px;
-       font-size: 1.4rem;
+       padding: $btn-padding;
+       font-size: $btn-fontsize;
        font-weight: bold;
-       border: 1px solid #252c37;
        border-radius: 2px;
        cursor: pointer;
        box-sizing: border-box;
-       background: #fafafa;
+       will-change: background;     
        transition: background 0.1s ease-in;
+       @include btn($btn-normal);
 
-       &:active {
-              background: #ececec;
-       }
-
-       &.primary {
-              background: #ff7f00;
-              color: white;
-              border: 1px solid #ff7f00;
-
-              &:active {
-                     background: #a65607;
-              }
-       }
-
-       &.warning {  
-              background: #ede526;
-              color: #393939;
-              border: 1px solid #cfbc15;
-
-              &:active {
-                     background: #cac310;
-              }
-       }
-
-       &.danger {
-              background: #f44848;
-              color: #ffffff;
-              border: 1px solid #b05b5b;
-
-              &:active {
-                     background: #bc3535;
-              }
-
-       }       
-
-       
+       @for $i from 1 through length($btns) {
+              $btn: nth($btns, $i);
+              @include create-btn(nth($btn, 1), nth($btn, 2));
+       }     
 
        &.disabled {
               border: 1px solid #c4c4c4 !important;

@@ -3,7 +3,7 @@ import { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
 
-       constructor(props) {
+       constructor(props: ErrorBoundaryProps) {
               super(props);
 
               this.state = {

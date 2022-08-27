@@ -1,8 +1,7 @@
 import FrameworkButton from "./FrameworkButton";
-import { FrameworkButtonProps } from './types';
-import btnClass from "./btnClasses";
+import { ButtonType, FrameworkButtonProps } from './types';
 
-function Button({ children, onClick, className = btnClass.default, isEnabled = true, type = "button" }
+function Button({ children, onClick, className = "default", isEnabled = true, type }
        : FrameworkButtonProps) {
 
        return (

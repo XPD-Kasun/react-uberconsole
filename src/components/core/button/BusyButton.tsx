@@ -1,6 +1,5 @@
-import btnClass from "./btnClasses";
 import FrameworkButton from "./FrameworkButton";
-import { FrameworkButtonProps } from "./types";
+import { ButtonType, FrameworkButtonProps } from "./types";
 
 function BusyButton({
        children,
@@ -8,8 +7,8 @@ function BusyButton({
        isBusy,
        busyContent,
        isEnabled = true,
-       className = btnClass.default,
-       type = "button" }: FrameworkButtonProps) {
+       className = "default",
+       type = ButtonType.button }: FrameworkButtonProps) {
 
        return (
               <FrameworkButton

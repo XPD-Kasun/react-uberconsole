@@ -1,8 +1,9 @@
 .textbox {
 
        padding: 7px 10px;
-       border: 1px solid #aab7b8;
-       background: white;
+       border: $text-border;
+       background: $text-background;
+       color: $text-color;
 
        &.no-border{
               border: none;              
@@ -11,7 +12,7 @@
        input.text {
               width: 100%;
               border: none;
-              font-size: 1.6rem;
+              font-size: $text-fontsize;
               outline: none;
               background: transparent;
               color: inherit;

@@ -34,7 +34,7 @@ function getSuspensedComponent(Component, ErrorUI) {
 }
 
 
-function AppShell({ children, sidebar: CustomSidebar, height, mobileMenu }: AppShellProps) {
+function AppShell({ children, sidebar: CustomSidebar, height }: AppShellProps) {
 
        let isMobile = window.innerWidth < breakPoints.tabWidth;
 
@@ -83,16 +83,31 @@ function AppShell({ children, sidebar: CustomSidebar, height, mobileMenu }: AppS
               );
        }, [moduleConfig, isSidebarCollapse, CustomSidebar, appShellHeight]);
 
-       let defaultModule = moduleConfig.modules[0];
+       let landingPath = useMemo(() => {
 
-       for (const module of moduleConfig.modules) {
+              let defaultModule = moduleConfig.modules[0];
 
-              if (module.isDefault) {
-                     defaultModule = module;
-                     break;
+              for (const module of moduleConfig.modules) {
+
+                     if (module.isDefault) {
+                            defaultModule = module;
+                            break;
+                     }
               }
-       }
 
+              let path = defaultModule.path;
+
+              if (defaultModule.subModules && defaultModule.subModules.length > 0) {
+
+                     let homeSubModule = defaultModule.subModules.find(x => x.path === '/');
+                     if (!homeSubModule) {
+                            path += defaultModule.subModules[0].path;
+                     }
+              }
+
+              return path;
+
+       }, [moduleConfig]);
 
        return (
               <Router basename={rootPath}>
@@ -106,8 +121,8 @@ function AppShell({ children, sidebar: CustomSidebar, height, mobileMenu }: AppS
                      >
                             <Routes>
                                    {
-                                          (defaultModule.path !== '/') && (
-                                                 <Route path="/" element={<Navigate to={defaultModule.path} />}></Route>
+                                          (landingPath !== '/') && (
+                                                 <Route path="/" element={<Navigate to={landingPath} />}></Route>
                                           )
                                    }
                                    {
