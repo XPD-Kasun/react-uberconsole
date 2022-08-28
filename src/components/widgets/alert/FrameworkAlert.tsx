@@ -37,7 +37,7 @@ function FrameworkAlert({ className, icon, onClose, type = AlertType.default, ch
        }
 
        let cls = cx({
-              "info-panel": true,
+              "alert": true,
               [type]: type,
               [className]: className
        });

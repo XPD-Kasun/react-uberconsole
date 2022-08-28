@@ -13,7 +13,10 @@
     "watch": "yarn build-dev && watch-css",
     "test": ""
   },
-  "files": ["dist", "scss"],
+  "files": [
+    "dist",
+    "scss"
+  ],
   "exports": {
     ".": "./dist/index.js",
     "./router": "./dist/router/index.js",
@@ -25,13 +28,13 @@
     "@types/nprogress": "^0.2.0",
     "@types/react": "^18.0.14",
     "@types/react-dom": "^18.0.6",
-    "node-sass": "^7.0.1",
     "react": "^17",
     "react-dom": "^17",
     "rollup": "^2.75.7",
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-scss": "^3.0.0",
     "rollup-plugin-terser": "^7.0.2",
+    "sass": "^1.54.5",
     "tslib": "^2.4.0",
     "typescript": "^4.7.4"
   },
@@ -42,14 +45,16 @@
     "react-icons": "^4.4.0"
   },
   "dependencies": {
-    "nprogress": "^0.2.0",
-    "react-router-dom": "^6.3.0",
     "classnames": "^2.3.1",
-    "react-icons": "^4.4.0"
+    "nprogress": "^0.2.0",
+    "react-icons": "^4.4.0",
+    "react-router-dom": "^6.3.0"
   },
   "typesVersions": {
     ">=3.1": {
-      "router": ["dist/router/index.d.ts"]
+      "router": [
+        "dist/router/index.d.ts"
+      ]
     }
   }
 }

@@ -1,20 +1,22 @@
+@use "sass:math";
+
 $nCols : 12;
 $tabWidth: 768px; // md 
 $deskWidth: 1024px; // lg
 $wideWidth: 1215px; // xl
 
-$colWidth: #{100/$nCols}#{'%'};
+$colWidth: #{math.div(100, $nCols)}#{'%'};
 
 @mixin gen-items($lbl, $cols) {
 
        %#{$lbl}-0 {
-              width: #{100/$nCols}#{'%'} !important;
+              width: #{math.div(100, $nCols)}#{'%'} !important;
        }
 
        @for $i from 1 through $cols {
 
               .#{$lbl}-#{$i} {
-                     width: #{100/$nCols*$i}#{'%'} !important;
+                     width: #{math.div(100, $nCols)*$i}#{'%'} !important;
               }
 
               .fluid .#{$lbl}-#{$i} {

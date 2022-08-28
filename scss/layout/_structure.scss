@@ -20,8 +20,8 @@
 }
 
 .snap .panel {
-       padding-top: $panel-margin/2;
-       padding-bottom: $panel-margin/2;
+       padding-top: $panel-margin*0.5;
+       padding-bottom: $panel-margin*0.5;
 }
 
 .flex {
