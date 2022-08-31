@@ -1,0 +1,12 @@
+.box {
+       box-shadow: $box-boxshadow;
+
+       &.has-padding {
+              padding: $box-padding;
+       }
+
+       .box {
+              box-shadow: none;
+              border: 1px solid #ccc;
+       }
+}

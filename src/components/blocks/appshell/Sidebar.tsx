@@ -39,8 +39,8 @@ export function SidebarNavigationSectionInternal({ className = "sidebar-section"
 		<div className={className} style={{ flex: 1, overflow: 'auto' }}>
 			<ul className="sidebar-list">
 				{
-					items.map(x => {
-						return <SidebarItem item={x}></SidebarItem>
+					items.map((x, i) => {
+						return <SidebarItem item={x} key={i}></SidebarItem>
 					})
 				}
 			</ul>

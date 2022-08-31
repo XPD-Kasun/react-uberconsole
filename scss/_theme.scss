@@ -126,6 +126,7 @@ $dropdown-border: 1px solid #aab7b8;
 $dropdown-background: #ffffff;
 
 $option-dotColor: #ff5722;
+$option-bordercolor: #aaa;
 
 $overlay-glassBackground: rgba(0, 0, 0, 0.2);
 $overlay-glassBackdropFilter: blur(2px);
@@ -178,7 +179,9 @@ $infopanel-warnBorder: 1px solid #ff9800;
 $infopanel-errorBackground: rgba(255, 190, 186, 0.3);
 $infopanel-errorBorder: 1px solid #e91e63;
 
-$snap-boxshadow: 0px 1px 2px 1px #8d8d8d;
+$box-boxshadow: 0px 1px 2px 1px #8d8d8d;
+$box-padding: 20px;
+
 $snap-headerBackground: #fafafa;
 $snap-headerPadding: 16px 20px;
 $snap-headerFontsize: 1.9rem;

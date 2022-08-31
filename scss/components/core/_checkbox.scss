@@ -1,6 +1,7 @@
 .checkbox {
 
-       $switchRadius:nth($switch-size, 2) - 6px;
+       @include no_tap_highlight();
+       $switchRadius: nth($switch-size, 2) - 6px;
 
        user-select: none;
        cursor: pointer;
@@ -36,7 +37,7 @@
        }
 
        .chk {
-              height: nth($chk-size,2);
+              height: nth($chk-size, 2);
               width: nth($chk-size, 1);
               border-radius: 3px;
               border: 1px solid $chk-bordercolor;

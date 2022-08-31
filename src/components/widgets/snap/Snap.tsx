@@ -21,7 +21,7 @@ const getDefaultHeader = (title, actionArea, isCollapsible, isCollapsed, onClick
        )
 }
 
-function Snap({ title, className, actionArea, isCollapsible, children }: SnapProps) {
+function Snap({ title, className, actionArea, isCollapsible, hasPadding, children }: SnapProps) {
 
        let [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -34,6 +34,7 @@ function Snap({ title, className, actionArea, isCollapsible, children }: SnapPro
        return (
               <FrameworkSnap
                      className={className}
+                     hasPadding={hasPadding}
                      header={header}>
                      {
                             !isCollapsed && children

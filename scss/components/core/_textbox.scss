@@ -1,12 +1,13 @@
 .textbox {
 
+       @include no_tap_highlight();
        padding: 7px 10px;
        border: $text-border;
        background: $text-background;
        color: $text-color;
 
-       &.no-border{
-              border: none;              
+       &.no-border {
+              border: none;
        }
 
        input.text {
@@ -17,6 +18,12 @@
               background: transparent;
               color: inherit;
        }
+
+       .clear-btn {
+              display: flex;
+              align-items: center;
+              cursor: pointer;
+       }
 }
 
 .search {
@@ -26,5 +33,12 @@
 
        & .textbox {
               background: transparent;
+              color: inherit;
+              display: flex;
+              align-items: center;
+       }
+
+       &.can-clear {
+             padding-right: 0; 
        }
 }

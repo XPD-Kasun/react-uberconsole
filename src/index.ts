@@ -5,6 +5,7 @@ export * from "./components/core/dropdown";
 export * from "./components/core/checkbox";
 export * from "./components/core/option";
 export * from "./components/core/textbox";
+export * from './components/core/box';
 export * from './components/core/overlay';
 export * from './components/core/uberProvider';
 export * from './components/widgets/snap';

@@ -78,7 +78,6 @@ export default class Overlay extends Component<OverlayProps> {
        render(): ReactNode {
 
               if (this.currentContainer) {
-                     console.log(this.props.children)
                      return createPortal(this.props.children, this.currentContainer.children[0])
               }
        }

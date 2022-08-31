@@ -1,4 +1,4 @@
-import React from "react";
+import React, { KeyboardEvent } from "react";
 import { BaseProps, ReactChildren } from "../../../types";
 import { Bounds } from "../../core/overlay/types";
 
@@ -13,8 +13,9 @@ export interface HeaderDropdownProps extends BaseProps {
        onChangeVisibility: (id:number, show: boolean) => void,
        showOverlay: boolean,
        overlayOffset?: Bounds,
-       title: ReactChildren,
+       headerElement: ReactChildren,
        dropdownClass: string,
+       showOnHeaderElementClick?: boolean,
        dropdownTopOffset?: number,
        dropdownLeftOffset?: number,
        hideOnOverlayClick: boolean,

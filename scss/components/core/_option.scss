@@ -1,4 +1,5 @@
 .option {
+       @include no_tap_highlight();
        cursor: pointer;
        user-select: none;
 
@@ -33,6 +34,10 @@
 
        .option-dot {
               fill: #fff;
+       }
+
+       .option-circle {
+              stroke: $option-bordercolor;
        }
 
        &.checked {

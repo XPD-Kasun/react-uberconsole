@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import cx from "classnames";
-import { FrameworkDropdownProps } from './types';
+import { BaseDropdownProps } from './types';
 import { TextBox } from '../textbox';
 import getItem from '../../../shared/getSelectedItem';
 import { IoSearch, IoChevronDownOutline, IoTvOutline } from 'react-icons/io5';
@@ -16,7 +16,7 @@ function FrameworkDropdown({
        htmlID,
        name,
        labelComponent,
-       listItemComponent }: FrameworkDropdownProps) {
+       listItemComponent }: BaseDropdownProps) {
 
        let [selectedItem, setSelectedItem] = useState(getItem(dataSource, selectedId));
        let [isOpen, setIsOpen] = useState(false);
@@ -61,12 +61,14 @@ function FrameworkDropdown({
               }
        }
 
+       const emptyFn = useRef(()=>{});
+
        return (
               <div className={cls} onBlur={onBlur} ref={ref} tabIndex={0} onKeyDown={onKeyDown}>
                      <div className="dropdown-wrapper">
                             <div className="dropdown-container">
                                    <div className="dropdown-hidden-select">
-                                          <select id={htmlID} name={name} value={dataSource.idSelector(selectedItem)}>
+                                          <select onChange={emptyFn.current} id={htmlID} name={name} value={dataSource.idSelector(selectedItem)}>
                                                  {
                                                         selectedItem && (
                                                                <option value={dataSource.idSelector(selectedItem)}></option>
@@ -95,7 +97,7 @@ function FrameworkDropdown({
                                                         {
                                                                dataSource.data.map((item) => {
                                                                       return (
-                                                                             <li>
+                                                                             <li key={dataSource.idSelector(item)}>
                                                                                     <ListItemComponent item={item} onSelect={onListItemSelect} />
                                                                              </li>
                                                                       );

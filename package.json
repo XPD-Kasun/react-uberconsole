@@ -1,6 +1,6 @@
 {
   "name": "react-uberconsole",
-  "version": "1.0.1-alpha-1",
+  "version": "1.0.1-alpha-3",
   "description": "A modular light weight backend console framework for react.",
   "main": "dist/index.js",
   "repository": "https://github.com/XPD-Kasun/react-uberconsole.git",
@@ -9,7 +9,7 @@
   "scripts": {
     "build": "rollup --config rollup-config.prod.js",
     "build-dev": "rollup --config rollup-config.dev.js --watch",
-    "watch-css": "node-sass --watch scss/index.scss dist/styles.css",
+    "watch-css": "sass --watch scss/index.scss dist/styles.css",
     "watch": "yarn build-dev && watch-css",
     "test": ""
   },

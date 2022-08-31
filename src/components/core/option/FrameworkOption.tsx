@@ -22,7 +22,7 @@ function FrameworkOption({ isEnabled, isChecked, className = "option", htmlID, n
                             <div className="button-container">
                                    <div className="option-button">
                                           <svg version="1.1" width="16" height="16">
-                                                 <circle cx="8" cy="8" r="7" stroke="#6d6d6d" fill="#fff" />
+                                                 <circle className="option-circle"cx="8" cy="8" r="7" stroke="#6d6d6d" fill="#fff" />
                                                  <circle className="option-dot" cx="8" cy="8" r="5" fill="#ff5722" />
                                           </svg>
                                    </div>

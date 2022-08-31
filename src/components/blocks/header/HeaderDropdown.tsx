@@ -45,7 +45,8 @@ function HeaderDropdown({
        showOnMobile = true,
        overlayOffset = { top: 0, left: 0, right: 0, bottom: 0 },
        children,
-       title,
+       headerElement,
+       showOnHeaderElementClick = true,
        dropdownTopOffset = 0,
        dropdownLeftOffset = 0
 }: HeaderDropdownProps) {
@@ -92,7 +93,7 @@ function HeaderDropdown({
                      return;
               }
 
-              onChangeVisibility(id, true);
+              showOnHeaderElementClick && onChangeVisibility(id, true);
 
        };
 
@@ -139,7 +140,7 @@ function HeaderDropdown({
        return (
               <div className={cls}>
                      <div className="header-content" ref={headerContentRef} onClick={onTitleClick}>
-                            {title}
+                            {headerElement}
                      </div>
                      <Popover
                             className={dropdownCls}

@@ -44,7 +44,6 @@ let getSidebarItems = (function() {
               let cachedSidebarItems = cache[module.path];
 
               if(cachedSidebarItems) {
-                     console.log('cached sidebar items, ', cachedSidebarItems);
                      return cachedSidebarItems;
               }
 
@@ -57,7 +56,6 @@ let getSidebarItems = (function() {
               let mappedSidebarItems = module.sidebarConfig.items.map(item => mapSubModuleRecursive(item, submoduleMap, module));
 
               cache[module.path] = mappedSidebarItems;
-              console.log(mappedSidebarItems);
               return mappedSidebarItems;
        }
 

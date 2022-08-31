@@ -40,7 +40,6 @@
               position: static;
 
               @media screen and (max-width: $tabWidth) {
-                     width: 100%;
                      position: fixed;
 
                      &.collapsed {

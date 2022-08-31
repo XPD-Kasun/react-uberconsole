@@ -41,7 +41,7 @@ function SidebarItem({ item }: { item: SidebarItemWithModules}) {
 							<ul className="subitem-list">
 								{
 									item.items
-										.map((y) => {
+										.map((y, i) => {
 											let isActiveRoute = location.pathname.startsWith(y.url);
 											let cls = cx({
 												active: isActiveRoute,
@@ -49,7 +49,7 @@ function SidebarItem({ item }: { item: SidebarItemWithModules}) {
 											});
 
 											return (
-												<li className="submenu-list-item">
+												<li key={y.subModuleId || i} className="submenu-list-item">
 													<div className="submenu-item">
 														<div className="sidebar-label">
 															{

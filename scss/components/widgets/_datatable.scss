@@ -1,13 +1,7 @@
 .datatable {       
-       border: $datatable-border;
        background: $datatable-background;
        width: 100%;
        overflow: auto;
-
-       &.raised {
-              border: none;
-              box-shadow: $snap-boxshadow;
-       }
 }
 
 table.simple {

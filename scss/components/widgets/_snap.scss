@@ -1,11 +1,6 @@
 .snap {
        width: 100%;
-       box-shadow: $snap-boxshadow;
 
-       .snap {
-              box-shadow: none;
-              border: 1px solid #ccc;
-       }
 
        .header {
               background: $snap-headerBackground;
@@ -56,8 +51,16 @@
 
 
        .content {
-              padding: 20px;
               background-color: $snap-contentBackground;
+       }
+
+       
+       &.has-padding {
+
+              .content{
+                     padding: $box-padding;
+              }
+
        }
 
 }

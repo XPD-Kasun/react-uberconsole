@@ -26,12 +26,12 @@ function getHeaderTabs(componentMap: TabComponentMap, onTabSelect, currentlySele
                             Object.keys(componentMap).map(id => {
 
                                    let cls = "tab-container";
-                                   if(id == currentlySelectedTab) {
+                                   if (id == currentlySelectedTab) {
                                           cls += ' is-active';
                                    }
 
                                    return (
-                                          <div className={cls} onClick={evt => onTabSelect(id)}>
+                                          <div key={id} className={cls} onClick={evt => onTabSelect(id)}>
                                                  <div className="tab">{componentMap[id].title}</div>
                                           </div>
                                    );
@@ -42,7 +42,7 @@ function getHeaderTabs(componentMap: TabComponentMap, onTabSelect, currentlySele
 
 }
 
-function TabPanel({ className, children }: TabPanelProps) {
+function TabPanel({ className, children, hasPadding = true }: TabPanelProps) {
 
        let childrenAr = React.Children.toArray(children);
        let componentMap: TabComponentMap = {};
@@ -58,13 +58,13 @@ function TabPanel({ className, children }: TabPanelProps) {
        });
 
 
-       let [selectedTab, setSelectedTab] = useState<{id: number, content: ReactChildren}>({
+       let [selectedTab, setSelectedTab] = useState<{ id: number, content: ReactChildren }>({
               id: 0,
               content: componentMap[0].content
        });
 
        useEffect(() => {
-              
+
               setSelectedTab({
                      content: componentMap[selectedTab.id].content,
                      id: selectedTab.id
@@ -87,7 +87,7 @@ function TabPanel({ className, children }: TabPanelProps) {
 
 
        return (
-              <FrameworkSnap header={getHeaderTabs(componentMap, onTabSelect, selectedTab.id)} className={cls}>
+              <FrameworkSnap hasPadding={hasPadding} header={getHeaderTabs(componentMap, onTabSelect, selectedTab.id)} className={cls}>
                      {
                             selectedTab.content
                      }

@@ -126,7 +126,7 @@ function AppShell({ children, sidebar: CustomSidebar, height }: AppShellProps) {
                                           )
                                    }
                                    {
-                                          moduleConfig.modules.map(m => {
+                                          moduleConfig.modules.map((m, i) => {
 
                                                  let suspensed = null;
 
@@ -138,7 +138,7 @@ function AppShell({ children, sidebar: CustomSidebar, height }: AppShellProps) {
                                                  }
                                                  return (
 
-                                                        <Route path={m.path} element={suspensed}>
+                                                        <Route key={m.id || i} path={m.path} element={suspensed}>
                                                                {
                                                                       m.subModules.map(subModule => {
 
@@ -156,6 +156,7 @@ function AppShell({ children, sidebar: CustomSidebar, height }: AppShellProps) {
 
                                                                              return (
                                                                                     <Route
+                                                                                           key={subModule.id}
                                                                                            path={subModulePath}
                                                                                            element={suspendedSubModule}
                                                                                     />

@@ -1,4 +1,5 @@
 import cx from "classnames";
+import { Box } from "../../core/box";
 import { Button } from "../../core/button";
 import { Action, ColumnMeta, DataTableProps } from "./types";
 
@@ -7,9 +8,9 @@ function getActionButtons(item, column: ColumnMeta, onActionClick) {
        return (
               <div className="btn-container">
                      {
-                            column.actions.map((action) => {
+                            column.actions.map((action, i) => {
                                    return (
-                                          <Button onClick={e => onActionClick(action, item)}>{typeof (action) === 'string' ? action : action.text}</Button>
+                                          <Button key={i} onClick={e => onActionClick(action, item)}>{typeof (action) === 'string' ? action : action.text}</Button>
                                    )
                             })
                      }
@@ -54,7 +55,7 @@ function DataTable({ className, dataSource, columnConfig, onAction }: DataTableP
 
        const onActionClick = (action: (Action | string), item) => {
 
-              if(typeof(action) === 'string') {
+              if (typeof (action) === 'string') {
                      onAction && onAction(action, item);
               }
               else {
@@ -65,49 +66,51 @@ function DataTable({ className, dataSource, columnConfig, onAction }: DataTableP
 
 
        return (
-              <div className={cls}>
-                     <table className="simple">
-                            <thead>
-                                   <tr>
+              <Box>
+                     <div className={cls}>
+                            <table className="simple">
+                                   <thead>
+                                          <tr>
+                                                 {
+                                                        columns.map((x,i) => <th style={{ width: x.width }} key={i}>{x.displayName}</th>)
+                                                 }
+                                          </tr>
+                                   </thead>
+                                   <tbody>
                                           {
-                                                 columns.map(x => <th style={{width:x.width}}>{x.displayName}</th>)
-                                          }
-                                   </tr>
-                            </thead>
-                            <tbody>
-                                   {
-                                          dataSource.data.map(item => {
-                                                 return (
-                                                        <tr>
-                                                               {
-                                                                      columns.map(column => {
+                                                 dataSource.data.map((item, j) => {
+                                                        return (
+                                                               <tr key={j}>
+                                                                      {
+                                                                             columns.map((column, i) => {
 
-                                                                             if (column.type && column.type == 'action') {
+                                                                                    if (column.type && column.type == 'action') {
+                                                                                           return (
+                                                                                                  <td key={`${j}_${i}`}>
+                                                                                                         {
+                                                                                                                getActionButtons(item, column, onActionClick)
+                                                                                                         }
+                                                                                                  </td>
+                                                                                           )
+
+                                                                                    }
                                                                                     return (
-                                                                                           <td>
-                                                                                                  {
-                                                                                                         getActionButtons(item,column, onActionClick)
-                                                                                                  }
+                                                                                           <td key={`${j}_${i}`}>
+                                                                                                  {item[column.name]}
                                                                                            </td>
-                                                                                    )
+                                                                                    );
+                                                                             })
+                                                                      }
+                                                               </tr>
+                                                        )
+                                                 })
 
-                                                                             }
-                                                                             return (
-                                                                                    <td>
-                                                                                           {item[column.name]}
-                                                                                    </td>
-                                                                             );
-                                                                      })
-                                                               }
-                                                        </tr>
-                                                 )
-                                          })
+                                          }
 
-                                   }
-
-                            </tbody>
-                     </table>
-              </div>
+                                   </tbody>
+                            </table>
+                     </div>
+              </Box>
        )
 
 }

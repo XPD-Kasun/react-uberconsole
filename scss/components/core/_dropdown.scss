@@ -1,5 +1,7 @@
 .dropdown {
 
+       @include no_tap_highlight();
+
        &.opened .label-icon>svg {
               transform: rotate(180deg);
        }

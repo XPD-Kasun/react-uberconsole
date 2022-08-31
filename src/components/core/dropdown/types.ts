@@ -7,14 +7,11 @@ export interface BaseDropdownProps extends BaseProps {
        htmlID?: string,
        isEnabled?: boolean,
        name?: string,
+       isBlur?: boolean,
        selectedId: string,
        onSearchChange?: (text: string) => void,
        labelComponent: React.FC<{ item: object }>,
        listItemComponent: React.FC<{ item: object, onSelect: (evt: MouseEvent, item: object) => void }>
-}
-
-export interface FrameworkDropdownProps extends BaseDropdownProps {       
-       isBlur?: boolean,
 }
 
 export interface DropdownProps extends BaseDropdownProps {

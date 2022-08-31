@@ -19,20 +19,23 @@ $btnFontSize: 14px;
 }
 
 .btn {
+       user-select: none;
+       outline: none;
        padding: $btn-padding;
        font-size: $btn-fontsize;
        font-weight: bold;
        border-radius: 2px;
        cursor: pointer;
        box-sizing: border-box;
-       will-change: background;     
+       will-change: background;
        transition: background 0.1s ease-in;
+       @include no_tap_highlight();
        @include btn($btn-normal);
 
        @for $i from 1 through length($btns) {
               $btn: nth($btns, $i);
               @include create-btn(nth($btn, 1), nth($btn, 2));
-       }     
+       }
 
        &.disabled {
               border: 1px solid #c4c4c4 !important;

@@ -15,9 +15,9 @@ function FrameworkBreadcrumbs({ className, children, links, separator, currentPa
                             <div className="breadcrumb-wrap">
                                    <div className="breadcrumbs">
                                           {
-                                                 links.map(link => {
+                                                 links.map((link, i) => {
                                                         return (
-                                                               <div className="breadcrumb">
+                                                               <div key={i} className="breadcrumb">
                                                                       <div className="breadcrumb-link">
                                                                              <Link to={link.path}>{link.name}</Link>
                                                                       </div>

@@ -44,7 +44,7 @@ function HeaderDropdown({
        showOnMobile = true,
        overlayOffset = { top: 0, left: 0, right: 0, bottom: 0 },
        children,
-       title,
+       headerElement: title,
        dropdownTopOffset = 0,
        dropdownLeftOffset = 0
 }: HeaderDropdownProps) {
