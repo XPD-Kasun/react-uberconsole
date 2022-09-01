@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { IoCloseSharp } from 'react-icons/io5';
 import { TextboxProps } from './types';
 
-function FrameworkTextBox({ className, isEnabled = true, name, value, htmlID, hasBorder = true, canClear = false, onChange, placeholder, clearBtnSize = 18, onClear }: TextboxProps) {
+function FrameworkTextBox({ className, isEnabled = true, name, value = '', htmlID, hasBorder = true, canClear = false, onChange, placeholder, clearBtnSize = 18, onClear }: TextboxProps) {
 
        let [hasText, setHasText] = useState(false);
 

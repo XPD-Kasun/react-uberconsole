@@ -15,6 +15,7 @@ function FrameworkDropdown({
        selectedId,
        htmlID,
        name,
+       onSelectItem,
        labelComponent,
        listItemComponent }: BaseDropdownProps) {
 
@@ -41,6 +42,7 @@ function FrameworkDropdown({
        const onListItemSelect = (evt, item) => {
               setSelectedItem(item);
               setIsOpen(false);
+              onSelectItem && onSelectItem(item);
        };
 
        const onLabelClick = () => {

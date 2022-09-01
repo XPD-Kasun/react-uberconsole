@@ -75,7 +75,7 @@ export default class Overlay extends Component<OverlayProps, { isMounted: boolea
        componentWillUnmount(): void {
 
               if(this.state.isMounted) {
-                     
+
                      setTimeout(() => {
                             this.overlayRoot.removeChild(this.currentContainer);
                      }, 200)
@@ -83,8 +83,7 @@ export default class Overlay extends Component<OverlayProps, { isMounted: boolea
        }
 
        render(): ReactNode {
-
-              console.log('renderedx', this.currentContainer, this.state)
+              
               if (this.state.isMounted && this.currentContainer) {
                      return createPortal(this.props.children, this.currentContainer.children[0])
               }

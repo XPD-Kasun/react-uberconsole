@@ -20,7 +20,7 @@ function ListItem({ item, onSelect }) {
        )
 }
 
-function SimpleDropdown({ className = "dropdown", dataSource, isBlur=true, selectedId, htmlID, name, textSelector, isEnabled }: DropdownProps) {
+function SimpleDropdown({ className = "dropdown", onSelectItem, dataSource, isBlur=true, selectedId, htmlID, name, textSelector, isEnabled }: DropdownProps) {
 
        let [searchTerm, setSearchTerm] = useState('');
 
@@ -69,6 +69,7 @@ function SimpleDropdown({ className = "dropdown", dataSource, isBlur=true, selec
                      selectedId={selectedId}
                      isBlur={isBlur}
                      htmlID={htmlID}
+                     onSelectItem={onSelectItem}
                      name={name}
                      isEnabled={isEnabled}
                      labelComponent={DefaultLabal}
