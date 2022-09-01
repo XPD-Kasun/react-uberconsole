@@ -51,8 +51,8 @@ function FrameworkDropdown({
               }
        };
 
-       const onSearchTermChange = (text) => {
-              onSearchChange && onSearchChange(text);
+       const onSearchTermChange = (evt) => {
+              onSearchChange && onSearchChange(evt.target.value);
        };
 
        const onKeyDown = (evt) => {

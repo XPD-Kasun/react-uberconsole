@@ -1,9 +1,10 @@
 import { Component, ReactNode } from "react";
 import { createPortal } from 'react-dom';
+import { IoThermometerOutline } from "react-icons/io5";
 import { OverlayProps } from './types';
 
 
-export default class Overlay extends Component<OverlayProps> {
+export default class Overlay extends Component<OverlayProps, { isMounted: boolean }> {
 
        overlayRoot = document.getElementById('overlay-root');
        currentContainer: HTMLDivElement = null;
@@ -29,6 +30,14 @@ export default class Overlay extends Component<OverlayProps> {
 
               }
               this.currentContainer = document.createElement('div');
+              this.state = {
+                     isMounted: false
+              };
+
+       }
+
+       componentDidMount(): void {
+
               let overlayEl = document.createElement('div');
               overlayEl.classList.add('overlay');
               if (this.props.className) {
@@ -52,34 +61,34 @@ export default class Overlay extends Component<OverlayProps> {
                             }
                      });
               }
+              this.setState({
+                     isMounted: true
+              });
        }
 
-       // componentDidMount(): void {
-       //        if(!document.body.classList.contains('has-overlay')) {
-       //               document.body.classList.add('has-overlay');
-       //        }
-       // }
-
-       componentDidUpdate(prevProps, prevState, snapshot?: any): void {              
+       componentDidUpdate(prevProps, prevState, snapshot?: any): void {
               if (!this.props.isShowing) {
                      this.currentContainer.classList.add('close');
               }
        }
 
        componentWillUnmount(): void {
-              setTimeout(() => {
-                     this.overlayRoot.removeChild(this.currentContainer);
-                     // if(this.overlayRoot.childElementCount == 0) {
-                     //        document.body.classList.remove('has-overlay');
-                     // }        
-              }, 200);
+
+              if(this.state.isMounted) {
+                     
+                     setTimeout(() => {
+                            this.overlayRoot.removeChild(this.currentContainer);
+                     }, 200)
+              }
        }
 
        render(): ReactNode {
 
-              if (this.currentContainer) {
+              console.log('renderedx', this.currentContainer, this.state)
+              if (this.state.isMounted && this.currentContainer) {
                      return createPortal(this.props.children, this.currentContainer.children[0])
               }
+              
        }
 
 
