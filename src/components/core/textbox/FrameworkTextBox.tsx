@@ -6,13 +6,30 @@ import { TextboxProps } from './types';
 function FrameworkTextBox({ className, isEnabled = true, name, value = '', htmlID, hasBorder = true, canClear = false, onChange, placeholder, clearBtnSize = 18, onClear }: TextboxProps) {
 
        let [hasText, setHasText] = useState(false);
-
-       let cls = cx({
+       let [textBoxClass, setTextBoxClass]  = useState({
               [className]: className,
               "textbox": true,
               disabled: !isEnabled,
               'no-border': !hasBorder
-       });
+       })
+
+
+       const onTextboxFocus = () => {
+
+              setTextBoxClass({
+                     ...textBoxClass,
+                     'has-focus': true
+              });
+
+       };
+
+       const onTextboxBlur = () => {
+              
+              setTextBoxClass({
+                     ...textBoxClass,
+                     'has-focus': false
+              });
+       }
 
        const _onChange = (evt) => {
 
@@ -41,10 +58,12 @@ function FrameworkTextBox({ className, isEnabled = true, name, value = '', htmlI
               }
 
        };
+       
+       let cls = cx(textBoxClass);
 
        return (
               <div className={cls}>
-                     <input id={htmlID} name={name} disabled={!isEnabled} type="text" placeholder={placeholder} className="text" onChange={_onChange} value={value} />
+                     <input onFocus={onTextboxFocus} onBlur={onTextboxBlur} id={htmlID} name={name} disabled={!isEnabled} type="text" placeholder={placeholder} className="text" onChange={_onChange} value={value} />
                      {
                             canClear && (
                                    <div className="clear-btn" onClick={onClearBtnClick} style={{ opacity: hasText ? 1 : 0 }}>

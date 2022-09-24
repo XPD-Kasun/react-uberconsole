@@ -1,7 +1,7 @@
 import React from 'react';
-import { UberConsoleProps, UberConsoleState, UberContextType } from './types';
+import { UberConsoleProps, UberConsoleState, UberContextInternalType, UberContextType } from './types';
 
-let contextValue: UberContextType = {
+let contextValue: UberContextInternalType = {
        moduleConfig: null,
        screenSize: { width: window.innerWidth, height: window.innerHeight }
 };
@@ -40,7 +40,7 @@ export default class UberConsoleProvider extends React.Component<UberConsoleProp
 
                      self.setState({
                             screenSize: { width: window.innerWidth, height: window.innerHeight }
-                     })
+                     });
 
               }, 1000));
        }

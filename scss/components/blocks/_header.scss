@@ -13,18 +13,6 @@
               align-items: center;
        }
 
-       .header-dropdown {
-              display: block;
-
-              @media screen and (max-width: $tabWidth) {
-                     display: none;                     
-              }
-
-              &.fixed {
-                     display: block !important;
-              }
-       }
-
        .show-menu {
               margin-right: 5px;
               padding: 3px;
@@ -57,11 +45,7 @@
        
        .menu-area {
               padding: 0 10px;
-              
-              .header-content {
-                     color: $header-menu-labelcolor;
-                     cursor: pointer;
-              }
+              color: $header-menu-labelcolor;
        }
 
        .mobile-menu-area {

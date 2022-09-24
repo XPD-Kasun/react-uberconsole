@@ -41,6 +41,7 @@
 
               @media screen and (max-width: $tabWidth) {
                      position: fixed;
+                     box-shadow: 6px 0px 7px -3px rgb(91 153 167 / 33%);
 
                      &.collapsed {
                             width: 0px !important;
@@ -86,9 +87,7 @@
                             background: #eaeaea;
                      }
 
-                     @media screen and (max-width: $tabWidth) {
-                            display: none;
-                     }
+                    
               }
 
               .sidebar-wrapper {

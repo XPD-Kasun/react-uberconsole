@@ -1,6 +1,6 @@
 {
   "name": "react-uberconsole",
-  "version": "1.0.1-alpha-4",
+  "version": "1.0.1-alpha-5",
   "description": "A modular light weight backend console framework for react.",
   "main": "dist/index.js",
   "repository": "https://github.com/XPD-Kasun/react-uberconsole.git",

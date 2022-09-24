@@ -5,9 +5,15 @@
        border: $text-border;
        background: $text-background;
        color: $text-color;
+       transition: box-shadow 0.2s ease;
+
+       &.has-focus {
+              box-shadow: $text-focusBorder;
+       }
 
        &.no-border {
               border: none;
+              box-shadow: none;
        }
 
        input.text {

@@ -8,18 +8,15 @@ export interface HeaderProps extends BaseProps {
 }
 
 export interface HeaderDropdownProps extends BaseProps {
-       id: number,
-       isVisible : boolean,       
-       onChangeVisibility: (id:number, show: boolean) => void,
-       showOverlay: boolean,
-       overlayOffset?: Bounds,
+       onControllerConnect?: (requestShow: (show:boolean) => void) => void,
        headerElement: ReactChildren,
        dropdownClass: string,
        showOnHeaderElementClick?: boolean,
-       dropdownTopOffset?: number,
-       dropdownLeftOffset?: number,
-       hideOnOverlayClick: boolean,
-       showOnMobile?: boolean
+       dropdownLeftOffset: number,
+       dropdownTopOffset: number,
+       showOnMobile?: boolean,
+       headerHeight: number
+
 }
 
 export interface MobileMenuProps extends BaseProps{

@@ -5,8 +5,11 @@ export type Rectangle = {
        height: number
 };
 
-export type UberContextType = {
-       moduleConfig: ModuleConfig,
+export interface UberContextType {
+       moduleConfig: ModuleConfig,       
+};
+
+export interface UberContextInternalType extends UberContextType {
        screenSize: Rectangle
 };
 
@@ -23,4 +26,15 @@ export interface UberConsoleProps {
 
 export interface UberConsoleState {
        screenSize: Rectangle
+}
+
+export interface PopoverManagerContextType {
+       currentPopoverId: number,
+       setCurrentPopoverId: (id: number) => void,
+       add: () => number
+}
+
+export interface PopoverManager {
+       isShowing: () => boolean, 
+       setVisibility: (show: boolean) => void
 }

@@ -1,0 +1,15 @@
+.tool-menu {
+       display: block;
+
+       @media screen and (max-width: $tabWidth) {
+              display: none;
+       }
+
+       &.fixed {
+              display: block !important;
+       }      
+              
+       .tool-content {
+              cursor: pointer;
+       }
+}
