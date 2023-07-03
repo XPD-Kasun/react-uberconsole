@@ -1,13 +1,24 @@
 import React from 'react';
 import { UberConsoleProps, UberConsoleState, UberContextInternalType, UberContextType } from './types';
 
+const isBrowser: () => boolean = () => typeof window !== 'undefined';
+
+
 let contextValue: UberContextInternalType = {
        moduleConfig: null,
-       screenSize: { width: window.innerWidth, height: window.innerHeight }
+       screenSize: null
 };
+
+if (isBrowser()) {
+       console.log('sdf')
+       contextValue.screenSize = { width: window.innerWidth, height: window.innerHeight }
+}
 
 function throttle(fn, duration) {
 
+       if (!isBrowser()) {
+              return null
+       }
        let timer = null;
 
        return function (evt) {
@@ -28,8 +39,15 @@ export default class UberConsoleProvider extends React.Component<UberConsoleProp
 
        constructor(props: UberConsoleProps) {
               super(props);
-              this.state = {
-                     screenSize: { width: window.innerWidth, height: window.innerHeight }
+              if (isBrowser()) {
+                     this.state = {
+                            screenSize: { width: window.innerWidth, height: window.innerHeight }
+                     }
+              }
+              else {
+                     this.state = {
+                            screenSize: {width:0, height:0}
+                     }
               }
        }
 
@@ -47,13 +65,13 @@ export default class UberConsoleProvider extends React.Component<UberConsoleProp
 
        cleanConfig() {
 
-              if(!this.props.uberConfig) {
+              if (!this.props.uberConfig) {
                      throw new Error("No uberConfig prop was passed. uberConfig is required for UberConsoleProvider.")
-              }              
+              }
 
               let moduleConfig = this.props.uberConfig.moduleConfig;
 
-              if(!moduleConfig) {
+              if (!moduleConfig) {
                      throw new Error("No moduleConfig was preset in uberConfig. Please include a valid moduleConfig for uberConfig prop.");
               }
 

@@ -6,6 +6,14 @@
 .container {
        margin: $container-margin;
        padding: $container-margin;
+
+       .panel:first-child {
+              padding-top: 0;
+       }
+
+       .panel:last-child {
+              padding-bottom: 0;
+       }
 }
 
 .center-block {
@@ -17,6 +25,14 @@
 .panel {
        padding-top: $panel-margin;
        padding-bottom: $panel-margin;
+
+       .panel:first-child {
+              padding-top: 0;
+       }
+
+       .panel:last-child {
+              padding-bottom: 0;
+       }
 }
 
 .snap .panel {
@@ -26,6 +42,18 @@
 
 .flex {
        display: flex;
+
+       &.center {
+              justify-content: center;
+       }
+
+       &.left {
+              justify-content: center;
+       }
+
+       &.right {
+              justify-content: right;
+       }
 }
 
 .v-flex {
@@ -48,23 +76,23 @@
        .pb-#{$i} {
               padding-bottom: (map-get($space-map, $i)) !important;
        }
-       
+
        .mt-#{$i} {
               margin-top: (map-get($space-map, $i)) !important;
        }
-       
+
        .pt-#{$i} {
               padding-top: (map-get($space-map, $i)) !important;
        }
-       
+
        .ml-#{$i} {
               margin-left: (map-get($space-map, $i)) !important;
        }
-       
+
        .pl-#{$i} {
               padding-left: (map-get($space-map, $i)) !important;
-       }       
-       
+       }
+
        .mr-#{$i} {
               margin-right: (map-get($space-map, $i)) !important;
        }
@@ -72,5 +100,5 @@
        .pr-#{$i} {
               padding-right: (map-get($space-map, $i)) !important;
        }
-       
+
 }

@@ -24,7 +24,7 @@ function FrameworkButton(props: FrameworkButtonProps) {
        let cls = cx({
               btn: true,
               disabled: !props.isEnabled,
-              [props.className]: props.className       
+              [props.className]: props.className
        });
 
        return (

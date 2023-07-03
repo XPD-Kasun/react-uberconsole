@@ -8,6 +8,7 @@ import Loader from "./Loader";
 import Sidebar, { SidebarNavigationSection } from "./Sidebar";
 import breakPoints from '../../../shared/breakPoints';
 import { AppShellProps } from "./types";
+import isBrowser from "../../../shared/isBrowser";
 
 function BasicError() {
        return (
@@ -36,7 +37,11 @@ function getSuspensedComponent(Component, ErrorUI) {
 
 function AppShell({ children, sidebar: CustomSidebar, height }: AppShellProps) {
 
-       let isMobile = window.innerWidth < breakPoints.tabWidth;
+       if(!isBrowser()) {
+              return null
+       }
+       
+       let isMobile = isBrowser() ? window.innerWidth < breakPoints.tabWidth : false;
 
        let moduleConfig = useUberConfig().moduleConfig;
        let [isSidebarCollapse, setIsSidebarCollapse] = useState(isMobile);

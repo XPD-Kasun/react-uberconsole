@@ -30,6 +30,8 @@ function BasicBreadcrumbs() {
        let config = useUberConfig().moduleConfig;
        let moduleInfo = getModuleInfoFromPath(config, path);
 
+       console.log(moduleInfo)
+
        if (!moduleInfo || !moduleInfo.module) {
               return null;
        }
@@ -56,6 +58,10 @@ function BasicBreadcrumbs() {
                             currentPage = moduleInfo.subModule.name;
                      }
               }
+              else {
+                     links = [];
+                     currentPage = moduleInfo.module.name;
+              }
        
               if (parts.length > 3) {
                      let modulepath = `/${parts[1]}/${parts[2]}/`;
@@ -81,7 +87,15 @@ function BasicBreadcrumbs() {
 
 
        return (
-              <FrameworkBreadcrumbs links={breadcrumbLinkSet.links} currentPageName={breadcrumbLinkSet.currentPage} separator={<div className="sep"><IoChevronForwardOutline size="18px" color="#bbb"></IoChevronForwardOutline></div>}></FrameworkBreadcrumbs>
+              <FrameworkBreadcrumbs 
+                     links={breadcrumbLinkSet.links} 
+                     currentPageName={breadcrumbLinkSet.currentPage} 
+                     separator={
+                            <div className="sep">
+                                   <IoChevronForwardOutline size="18px" color="#bbb"></IoChevronForwardOutline>
+                            </div>
+                     }>
+              </FrameworkBreadcrumbs>
        );
 }
 
