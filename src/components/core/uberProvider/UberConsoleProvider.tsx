@@ -38,7 +38,9 @@ export const UberConsoleContext = React.createContext(contextValue);
 export default class UberConsoleProvider extends React.Component<UberConsoleProps, UberConsoleState> {
 
        constructor(props: UberConsoleProps) {
+
               super(props);
+
               if (isBrowser()) {
                      this.state = {
                             screenSize: { width: window.innerWidth, height: window.innerHeight }
@@ -86,6 +88,14 @@ export default class UberConsoleProvider extends React.Component<UberConsoleProp
                      }
                      if (module.path[0] !== '/') {
                             module.path = '/' + module.path;
+                     }
+                     if(!module.subModules) {
+                            module.subModules = [];
+                     }
+                     if(!module.sidebarConfig) {
+                            module.sidebarConfig = {
+                                   items: []
+                            };
                      }
               }
 

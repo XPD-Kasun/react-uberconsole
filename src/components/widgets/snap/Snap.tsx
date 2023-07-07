@@ -3,7 +3,7 @@ import { IoCaretDown } from 'react-icons/io5';
 import FrameworkSnap from './FrameworkSnap';
 import { SnapProps } from './types';
 
-const getDefaultHeader = (title, actionArea, isCollapsible, isCollapsed, onClickCollapsible) => {
+const getDefaultHeader = (title, actionArea, isCollapsible = false, isCollapsed, onClickCollapsible) => {
        return (
               <div className="snap-default-header">
                      {

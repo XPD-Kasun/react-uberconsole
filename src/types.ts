@@ -1,4 +1,4 @@
-import React from "react";
+import React, { ExoticComponent, LazyExoticComponent } from "react";
 export type ReactChildren = JSX.Element[] | JSX.Element | React.ReactNode | null
 
 export type KeySelector = (item: object) => string;
@@ -13,7 +13,7 @@ export interface SubModule {
        id: any,
        name: string,
        path: string,
-       component: Promise<{ default: React.ComponentType<any> }>,
+       component: LazyExoticComponent<React.FC>,
        hideSidebar?: boolean,
        hasInternalRoutes?: boolean
 }

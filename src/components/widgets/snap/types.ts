@@ -7,7 +7,7 @@ export interface FrameworkSnapProps extends BaseProps {
 
 export interface SnapProps extends BaseProps {
        title: string,
-       isCollapsible: boolean,
+       isCollapsible?: boolean,
        actionArea?: ReactChildren,
        hasPadding?: boolean
 }

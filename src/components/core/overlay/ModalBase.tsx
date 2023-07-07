@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Overlay from './Overlay';
 import { ModalBaseProps } from "./types";
 
-function ModalBase({ className, children, isShowing }: ModalBaseProps) {
+function ModalBase({ className, children, isShowing, closeTimeout=200 }: ModalBaseProps) {
 
        let [retainContent, setRetainCont] = useState(isShowing);
 
@@ -12,7 +12,7 @@ function ModalBase({ className, children, isShowing }: ModalBaseProps) {
               if(!isShowing) {
                      setTimeout(() => {
                             setRetainCont(false)
-                     }, 200);              
+                     }, closeTimeout);              
               }
               else{
                      setRetainCont(true);

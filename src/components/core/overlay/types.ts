@@ -8,6 +8,7 @@ export interface OverlayProps extends BaseProps {
 
 export interface ModalBaseProps extends BaseProps {
     isShowing: boolean;
+    closeTimeout?: number;
 }
 
 export interface ModalProps extends ModalBaseProps {

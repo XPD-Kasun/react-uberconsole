@@ -18,7 +18,7 @@ export interface SidebarNavigationSectionProps {
 
 export interface AppShellProps extends BaseProps {
        sidebar?: ReactChildren,
-       height: number|string
+       height?: number|string
 }
 
 export interface ModuleLinkProps extends BaseProps{

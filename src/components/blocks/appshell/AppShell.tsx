@@ -1,4 +1,4 @@
-import React, { useMemo, Suspense, lazy, useState, MouseEvent } from "react";
+import React, { useMemo, Suspense, lazy, useState, MouseEvent, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Outlet, Navigate } from "react-router-dom";
 import normalizeRootPath from "../../../shared/normalizeRootPath";
 import { ErrorBoundary } from "../../core/errorBoundary";
@@ -41,12 +41,14 @@ function AppShell({ children, sidebar: CustomSidebar, height }: AppShellProps) {
               return null
        }
        
-       let isMobile = isBrowser() ? window.innerWidth < breakPoints.tabWidth : false;
+       let isMobile = isBrowser() ? window.innerWidth < breakPoints.tabWidth : false;       
 
        let moduleConfig = useUberConfig().moduleConfig;
        let [isSidebarCollapse, setIsSidebarCollapse] = useState(isMobile);
 
        let rootPath = normalizeRootPath(moduleConfig.rootPath);
+
+       let [shellHeight, setShellHeight] = useState(height || 0);
 
        const onSidebarCollapse = (evt) => {
               setIsSidebarCollapse(isCollapsed => !isCollapsed);
@@ -64,14 +66,31 @@ function AppShell({ children, sidebar: CustomSidebar, height }: AppShellProps) {
 
        let appShellHeight = useMemo(() => {
 
-              if (height.toString().indexOf('calc') > -1) {
+              if (shellHeight.toString().indexOf('calc') > -1) {
 
-                     return height.toString().replace(')', ' - var(--mobile-menu-height))');
+                     return shellHeight.toString().replace(')', ' - var(--mobile-menu-height))');
               }
 
-              return height;
+              return shellHeight;
 
-       }, [height]);
+       }, [shellHeight]);
+
+       useEffect(() => {
+              if(!height) {
+                     const headerMain = document.getElementsByClassName('header-main');
+                     const footer = document.getElementsByClassName('footer-fs')
+                     let reducableHeight = 0;
+
+                     if(headerMain.length > 0) {
+                            reducableHeight += headerMain[0].clientHeight;
+                     }
+                     if(footer.length > 0) {
+                            reducableHeight += footer[0].clientHeight;
+                     }
+                     setShellHeight(`calc(100vh - ${reducableHeight}px)`)
+              }
+
+       },[height])
 
 
        let sidebar = useMemo(() => {

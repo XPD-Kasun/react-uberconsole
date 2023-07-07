@@ -32,7 +32,7 @@ function Header({ className, children, mobileMenuToggle, mobileMenu }: HeaderPro
        }
 
        let cls = cx({
-              "header-main": true,
+              "header-container": true,
               [className]: className
        });
 
@@ -43,8 +43,8 @@ function Header({ className, children, mobileMenuToggle, mobileMenu }: HeaderPro
 
 
        return (
-              <header className={cls}>
-                     <div className="header-container" ref={headerMainRef}>
+              <header className="header-main">
+                     <div className={cls} ref={headerMainRef}>
                             <div className="header-wrapper">
                                    {
                                           children
